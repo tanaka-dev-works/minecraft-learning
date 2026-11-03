@@ -60,6 +60,20 @@
     list.appendChild(li);
   });
 
+  /* しらべる・おうちの人へ の メニュー */
+  ["lookup", "parents"].forEach(function (menu) {
+    var box = document.getElementById("menu-" + menu);
+    if (!box) return;
+    box.innerHTML = (data.pages || []).filter(function (p) { return p.menu === menu; }).map(function (p) {
+      var ic = window.PixelIcon ? window.PixelIcon(p.icon) : "";
+      var inner = ic + '<span class="menu-text"><span>' + p.title + '</span>' +
+        (p.ready ? "" : '<span class="soon-note">' + (menu === "parents" ? "準備中" : "もうすぐ") + "</span>") + "</span>";
+      return p.ready
+        ? '<a class="btn ' + p.color + '" href="' + p.href + '">' + inner + "</a>"
+        : '<span class="btn ' + p.color + '" aria-disabled="true">' + inner + "</span>";
+    }).join("");
+  });
+
   var count = document.getElementById("stamp-count");
   if (count && window.Progress) {
     var n = levels.filter(function (lv) { return window.Progress.hasStamp(lv.id); }).length;

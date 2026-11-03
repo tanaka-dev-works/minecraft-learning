@@ -56,6 +56,27 @@ window.SITE_DATA = {
     }
   ],
 
+  /* ページの 一覧（トップの メニュー・さがす・パンくずで つかう）。ready:false は 「もうすぐ」と 出る。
+     menu: lookup=しらべる / parents=おうちの人へ */
+  pages: [
+    { id: "commands", title: "コマンドずかん", href: "pages/commands.html", menu: "lookup", icon: "book-open", color: "btn-diamond", yomi: ["こまんど", "ずかん", "いちらん"], sub: "レベルごとの コマンド", ready: true },
+    { id: "syntax", title: "コマンドの かきかた", href: "pages/syntax.html", menu: "lookup", icon: "keyboard", color: "btn-diamond", yomi: ["かきかた", "きーぼーど", "えいすう", "きごう", "あいてむの なまえ"], sub: "キーボード・きごう・アイテムの なまえ", ready: false },
+    { id: "selectors", title: "ばしょと あいて", href: "pages/selectors.html", menu: "lookup", icon: "map-pin", color: "btn-diamond", yomi: ["ざひょう", "せれくたー", "ばしょ", "あいて", "@p", "~"], sub: "ざひょうと @p @s など", ready: false },
+    { id: "command-blocks", title: "コマンドブロックずかん", href: "pages/command-blocks.html", menu: "lookup", icon: "blocks", color: "btn-diamond", yomi: ["こまんどぶろっく", "いんぱるす", "ちぇーん", "りぴーと"], sub: "インパルス・チェーン・リピート", ready: false },
+    { id: "troubleshooting", title: "トラブル かいけつ", href: "pages/troubleshooting.html", menu: "lookup", icon: "bug", color: "btn-sky", yomi: ["とらぶる", "うごかない", "こまった", "でばっぐ"], sub: "うごかない ときは ここ", ready: false },
+    { id: "errors", title: "エラーずかん", href: "pages/errors.html", menu: "lookup", icon: "warning-diamond", color: "btn-sky", yomi: ["えらー", "あかい もじ"], sub: "あかい もじが 出たら", ready: false },
+    { id: "quiz", title: "クイズ", href: "pages/quiz.html", menu: "lookup", icon: "circle-question", color: "btn-sky", yomi: ["くいず", "もんだい"], sub: "レベルごとの もんだい", ready: false },
+    { id: "programming", title: "プログラミングって なに？", href: "pages/programming.html", menu: "lookup", icon: "gamepad", color: "btn-sky", yomi: ["ぷろぐらみんぐ", "めいれい", "じゅんばん", "もし", "くりかえし"], sub: "まとめ", ready: false },
+    { id: "cheatsheet", title: "はやみひょう（コマンド）", href: "pages/cheatsheet.html", menu: "lookup", icon: "list-box", color: "btn-grass", yomi: ["はやみひょう", "まとめ"], sub: "1まいで ぜんぶ", ready: false },
+    { id: "cheatsheet-blocks", title: "はやみひょう（ブロックの せってい）", href: "pages/cheatsheet-blocks.html", menu: "lookup", icon: "list-box", color: "btn-grass", yomi: ["はやみひょう", "せってい"], sub: "コマンドブロックの せってい", ready: false },
+    { id: "reference", title: "コマンド大ずかん", href: "pages/reference.html", menu: "lookup", icon: "book-open", color: "btn-grass", yomi: ["だいずかん", "おうよう", "ぜんぶ"], sub: "もっと しりたい ひとへ", ready: false },
+    { id: "dont", title: "やっては いけない コマンド", href: "pages/dont.html", menu: "lookup", icon: "warning-diamond", color: "btn-dirt", yomi: ["だめ", "あぶない", "ちゅうい", "やってはいけない"], sub: "まもって あそぼう", ready: false },
+    { id: "stamps", title: "スタンプちょう", href: "pages/stamps.html", menu: "lookup", icon: "trophy", color: "btn-dirt", yomi: ["すたんぷ"], sub: "あつめた スタンプ", ready: true },
+    { id: "start", title: "はじめに（ワールドの準備）", href: "pages/start.html", menu: "parents", icon: "gamepad", color: "btn-grass", yomi: ["じゅんび", "ちーと", "わーるど"], sub: "チート・コマンドブロックの入手", ready: false },
+    { id: "parents", title: "おうちの人へ（安全・声かけ）", href: "pages/parents.html", menu: "parents", icon: "users", color: "btn-grass", yomi: ["ほごしゃ", "あんぜん", "みまもり"], sub: "安全の設定・レベルごとの声かけ", ready: false },
+    { id: "checklist", title: "実機チェックリスト", href: "pages/checklist.html", menu: "parents", icon: "check", color: "btn-grass", yomi: ["ちぇっくりすと", "じっき"], sub: "Switch で試した記録", ready: false }
+  ],
+
   commands: [],
   works: [],
   quizzes: []

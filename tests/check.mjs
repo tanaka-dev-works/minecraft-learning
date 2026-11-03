@@ -15,7 +15,7 @@ const { chromium } = createRequire(import.meta.url)("playwright");
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const BASE = "/minecraft-learning/";
-const PAGES = ["index.html", "404.html", "pages/stamps.html", "pages/parts.html"];
+const PAGES = ["index.html", "404.html", "pages/stamps.html", "pages/parts.html", "pages/commands.html", "pages/command.html?id=tp", "pages/command.html?id=scoreboard", "pages/command.html?id=nope", "pages/search.html?q=てれぽーと"];
 const WIDTHS = [
   { name: "phone", width: 375, height: 740 },
   { name: "tablet-portrait", width: 768, height: 1024 },
@@ -109,7 +109,7 @@ for (const vp of WIDTHS) {
 // 3) サイト内リンク切れ
 for (const link of allLinks) {
   if (!link.startsWith(origin)) continue;
-  const path = new URL(link).pathname;
+  const path = decodeURIComponent(new URL(link).pathname);
   const file = join(ROOT, path.slice(BASE.length) || "index.html");
   if (!existsSync(file)) fail(`リンク切れ: ${path}`);
 }
@@ -217,6 +217,46 @@ for (const link of allLinks) {
   const first = await page.locator("#sugoroku .square").first().getAttribute("data-state");
   if (first !== "clear") fail(`トップに反映されない: ${first}`);
   if (errors.length) fail("部品でエラー: " + errors.join(" / "));
+  await context.close();
+}
+
+// 9) コマンドずかん・さがす
+{
+  const context = await browser.newContext({ viewport: { width: 768, height: 1024 } });
+  const page = await context.newPage();
+  const errors = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+  await page.goto(origin + BASE + "pages/commands.html");
+  const cards = await page.locator(".cmd-card").count();
+  const total = await page.evaluate(() => window.SITE_DATA.commands.length);
+  if (cards !== total || total < 20) fail(`コマンドの カード ${cards} / データ ${total}`);
+  // 全コマンドに 確認状況と公式URL、例文、ひきすう
+  const bad = await page.evaluate(() => window.SITE_DATA.commands.filter((c) =>
+    !["doc", "device", "unknown"].includes(c.status) || !/^https:\/\/learn\.microsoft\.com\//.test(c.parents.url) ||
+    !c.examples.length || !c.args.length || !c.form.length || c.examples.some((e) => /[^\x20-\x7e]/.test(e.cmd))).map((c) => c.id));
+  if (bad.length) fail("データが たりない／例文に全角: " + bad.join(", "));
+  // 関連リンクの id が あるか
+  const badRel = await page.evaluate(() => { const ids = new Set(window.SITE_DATA.commands.map((c) => c.id)); return window.SITE_DATA.commands.flatMap((c) => (c.related || []).filter((r) => !ids.has(r)).map((r) => c.id + "→" + r)); });
+  if (badRel.length) fail("関連コマンドの id が ない: " + badRel.join(", "));
+  // さがす：てれぽーと / テレポート / tp / ＴＰ で /tp が 1ばん
+  for (const q of ["てれぽーと", "テレポート", "tp", "ＴＰ", "/tp"]) {
+    await page.goto(origin + BASE + "pages/search.html?q=" + encodeURIComponent(q));
+    const first = await page.locator(".search-title").first().textContent().catch(() => "");
+    if (first !== "/tp") fail(`「${q}」で /tp が さいしょに 出ない（${first}）`);
+  }
+  // くわしいページ：おぼえた
+  await page.goto(origin + BASE + "pages/command.html?id=give");
+  await page.locator("#learned-btn").click();
+  await page.goto(origin + BASE + "pages/commands.html");
+  const learned = await page.locator('a[href="command.html?id=give"] .cmd-learned').count();
+  if (learned !== 1) fail("おぼえた が いちらんに 出ない");
+  // 子ども向けページに外部リンクがない
+  for (const p of ["pages/command.html?id=tp", "pages/commands.html", "index.html"]) {
+    await page.goto(origin + BASE + p);
+    const ext = await page.evaluate(() => [...document.querySelectorAll("a[href]")].filter((a) => !a.href.startsWith(location.origin) && !a.href.startsWith("file:")).length);
+    if (ext) fail(`${p}: 子ども向けページに外部リンクが ${ext} こ`);
+  }
+  if (errors.length) fail("ずかんでエラー: " + errors.join(" / "));
   await context.close();
 }
 

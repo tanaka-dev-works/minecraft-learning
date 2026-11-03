@@ -220,7 +220,8 @@ a.square:active { transform: translateY(4px); }
 
 /* ===== トップ：しらべる・おうちの人へ ===== */
 .menu-grid { display: grid; gap: var(--gap-tap); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-bottom: var(--sp-6); }
-.menu-grid .btn { width: 100%; min-height: 76px; flex-direction: column; align-items: flex-start; justify-content: center; gap: 0; text-align: left; }
+.menu-grid .btn { width: 100%; min-height: 76px; justify-content: flex-start; text-align: left; padding-left: var(--sp-4); }
+.menu-text { display: flex; flex-direction: column; }
 .soon-note { font-family: var(--font-body); font-size: 15px; display: block; }
 
 .section-title { display: flex; align-items: center; gap: var(--sp-2); }
@@ -421,3 +422,88 @@ body.has-step-nav .site-footer { padding-bottom: 120px; }
   .tile .tile-face { font-size: 24px; min-height: 30px; }
   .step-nav .btn { min-width: 0; font-size: var(--fs-body); }
 }
+
+/* =====================================================================
+   フェーズ3：コマンドずかん・さがす
+   ===================================================================== */
+:root {
+  --f-cmd: var(--c-sky);
+  --f-who: var(--c-diamond);
+  --f-where: var(--c-dirt);
+  --f-thing: var(--c-grass);
+  --f-num: #8a5a00;
+  --f-word: var(--c-stone);
+}
+.lv-chip, .where-chip {
+  display: inline-flex; align-items: center; gap: 4px; font-family: var(--font-head); font-size: var(--fs-small);
+  padding: 0 var(--sp-2); border: 3px solid var(--c-line); background: var(--c-dirt); color: #fff; margin-right: var(--sp-2);
+}
+.where-chip { background: var(--c-surface); color: var(--c-text); }
+.where-chip .icon { width: 22px; height: 22px; }
+.cmd-level { margin-bottom: var(--sp-6); }
+.cmd-level h2 { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); }
+.cmd-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--gap-tap); grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); }
+.cmd-card {
+  display: flex; flex-direction: column; gap: var(--sp-1); height: 100%; min-height: 60px;
+  padding: var(--sp-4); background: var(--c-surface); color: var(--c-text); text-decoration: none;
+  border: 3px solid var(--c-line); border-bottom-width: calc(3px + var(--bevel));
+}
+a.cmd-card:active { transform: translateY(4px); }
+.cmd-name { font-family: var(--font-code); font-size: var(--fs-h2); font-weight: 700; color: var(--c-sky-dark); }
+.cmd-read { font-family: var(--font-body); font-size: var(--fs-small); color: var(--c-text-sub); margin-left: var(--sp-2); font-weight: 400; }
+.cmd-what { font-size: var(--fs-small); }
+.cmd-ex code { font-family: var(--font-code); font-size: var(--fs-body); background: var(--c-stone-light); padding: 0 var(--sp-2); display: inline-block; overflow-wrap: anywhere; word-break: break-all; }
+.cmd-meta { display: flex; flex-wrap: wrap; align-items: center; gap: var(--sp-2); font-size: 15px; color: var(--c-text-sub); margin-top: auto; }
+.cmd-meta .icon { width: 22px; height: 22px; }
+.cmd-learned { display: inline-flex; align-items: center; gap: 2px; color: var(--c-grass-dark); font-weight: 700; }
+.cmd-title { font-family: var(--font-code); font-size: 40px; }
+.cmd-badges { display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+
+/* 色分けした かきかた（色＋下の ラベルで 見分ける） */
+.form-row { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin-bottom: var(--sp-5); }
+.form-part { display: inline-flex; flex-direction: column; align-items: center; border: 3px solid var(--c-line); }
+.form-part code { font-family: var(--font-code); font-size: var(--fs-code); font-weight: 700; padding: var(--sp-1) var(--sp-3); color: #fff; word-break: break-all; }
+.form-label { font-size: 13px; line-height: 1.4; padding: 2px var(--sp-2); background: var(--c-surface); width: 100%; text-align: center; }
+.form-cmd code { background: var(--f-cmd); }
+.form-who code { background: var(--f-who); }
+.form-where code { background: var(--f-where); }
+.form-thing code { background: var(--f-thing); }
+.form-num code { background: var(--f-num); }
+.form-word code { background: var(--f-word); }
+
+.arg-list { padding-left: 1.2em; }
+.arg-list li { margin-bottom: var(--sp-3); }
+.example { border-left: 6px solid var(--c-sky); padding-left: var(--sp-4); margin-bottom: var(--sp-5); }
+.example-no { font-family: var(--font-head); margin-bottom: var(--sp-2); }
+.example-result { display: flex; gap: var(--sp-2); align-items: flex-start; }
+.example-result .icon { width: 28px; height: 28px; flex: none; margin-top: 4px; }
+.rel-links, .cmd-actions { display: flex; flex-wrap: wrap; gap: var(--gap-tap); }
+.btn[aria-pressed="true"]#learned-btn { --btn-bg: var(--c-grass-dark); }
+.btn[aria-pressed="true"]#fav-btn { --btn-bg: var(--c-alert); }
+.pager { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--gap-tap); margin-top: var(--sp-6); }
+details.box > summary { cursor: pointer; min-height: var(--tap); display: flex; align-items: center; font-family: var(--font-head); }
+.parents-box { font-size: var(--fs-small); }
+.syntax-list code, .copy-list code, code.url { font-family: var(--font-code); word-break: break-all; }
+.copy-list li { margin-bottom: var(--sp-2); }
+.status { font-weight: 700; }
+.status-doc { color: var(--c-sky-dark); }
+.status-device { color: var(--c-grass-dark); }
+.status-unknown { color: var(--c-alert); }
+
+/* さがす */
+.search-form label { display: block; margin-bottom: var(--sp-2); }
+.search-form input {
+  width: 100%; min-height: 64px; font: inherit; font-size: var(--fs-lead); padding: var(--sp-2) var(--sp-3);
+  border: 3px solid var(--c-line); background: #fff; border-radius: 0;
+}
+.search-list { list-style: none; margin: var(--sp-4) 0 var(--sp-6); padding: 0; display: grid; gap: var(--sp-3); }
+.search-card {
+  display: flex; gap: var(--sp-3); align-items: center; min-height: 72px; padding: var(--sp-3) var(--sp-4);
+  background: var(--c-surface); color: var(--c-text); text-decoration: none; border: 3px solid var(--c-line); border-bottom-width: 7px;
+}
+.search-card > .icon { width: 36px; height: 36px; flex: none; color: var(--c-diamond); }
+.search-card > span { display: flex; flex-direction: column; }
+.search-kind { font-size: 14px; color: var(--c-text-sub); }
+.search-title { font-family: var(--font-head); font-size: var(--fs-lead); }
+.search-sub { font-size: var(--fs-small); }
+.search-none { margin: var(--sp-4) 0; }

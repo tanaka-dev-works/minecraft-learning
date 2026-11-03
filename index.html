@@ -23,21 +23,14 @@
     <ol id="sugoroku" class="sugoroku" aria-label="レベル 1から 6"></ol>
 
     <h2 class="section-title">しらべる</h2>
-    <div class="menu-grid">
-      <span class="btn btn-diamond" aria-disabled="true">コマンドずかん<span class="soon-note">もうすぐ</span></span>
-      <span class="btn btn-diamond" aria-disabled="true">トラブル かいけつ<span class="soon-note">もうすぐ</span></span>
-      <span class="btn btn-diamond" aria-disabled="true">はやみひょう<span class="soon-note">もうすぐ</span></span>
-      <span class="btn btn-dirt" aria-disabled="true">やっては いけない コマンド<span class="soon-note">もうすぐ</span></span>
-    </div>
+    <div class="menu-grid" id="menu-lookup"></div>
 
     <h2 class="section-title">おうちの <ruby>人<rt>ひと</rt></ruby>へ</h2>
-    <div class="menu-grid no-yomi">
-      <span class="btn btn-grass" aria-disabled="true">はじめに（ワールドの準備）<span class="soon-note">準備中</span></span>
-      <span class="btn btn-grass" aria-disabled="true">おうちの人へ（安全の設定）<span class="soon-note">準備中</span></span>
-    </div>
+    <div class="menu-grid no-yomi" id="menu-parents"></div>
   </main>
 
   <script src="js/data.js"></script>
+  <script src="js/data-commands.js"></script>
   <script src="js/icons.js"></script>
   <script src="js/progress.js"></script>
   <script src="js/main.js"></script>

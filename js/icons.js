@@ -32,10 +32,21 @@
     "circle-question": "<path d=\"M18 22H6V20H18V22ZM6 20H4V18H6V20ZM20 20H18V18H20V20ZM4 18H2V6H4V18ZM13 18H11V16H13V18ZM22 18H20V6H22V18ZM15 13H13V15H11V11H15V13ZM17 11H15V8H17V11ZM9 10H7V8H9V10ZM15 8H9V6H15V8ZM6 6H4V4H6V6ZM20 6H18V4H20V6ZM18 4H6V2H18V4Z\"/>",
     "reload": "<path d=\"M16 4h2v6h-2zm-2-2h2v2h-2zm0 2h2v8h-2zM4 8H2v5h2z\"/> <path d=\"M4 6h16v2H4zm4 14H6v-6h2zm2 2H8v-2h2zm0-2H8v-8h2zm10-4h2v-5h-2z\"/> <path d=\"M20 18H4v-2h16z\"/>",
     "list-box": "<path d=\"M4 2h16v2H4zm2 5h2v2H6zm4 0h8v2h-8zm-4 4h2v2H6zm4 0h8v2h-8zm-4 4h2v2H6zm4 0h8v2h-8zm-6 5h16v2H4zM2 4h2v16H2zm18 0h2v16h-2z\"/>",
-    "text-cursor-input": "<path d=\"M5 3h4v2H5zm4 2h2v14H9zm2-2h4v2h-4zM4 7h3v2H4zM2 9h2v6H2zm2 6h3v2H4zm9 0h7v2h-7zm7-6h2v6h-2zm-7-2h7v2h-7zM6 19h3v2H6zm5 0h3v2h-3z\"/>"
+    "text-cursor-input": "<path d=\"M5 3h4v2H5zm4 2h2v14H9zm2-2h4v2h-4zM4 7h3v2H4zM2 9h2v6H2zm2 6h3v2H4zm9 0h7v2h-7zm7-6h2v6h-2zm-7-2h7v2h-7zM6 19h3v2H6zm5 0h3v2h-3z\"/>",
+    "comment": "<path d=\"M4 2h16v2H4zm0 14h14v2H4zM2 4h2v12H2zm18 0h2v18h-2zm-2 14h2v2h-2z\"/>",
+    "copy": "<path d=\"M8 6h12v2H8zM4 2h12v2H4zm2 6h2v12H6zM2 4h2v12H2zm6 16h12v2H8zM20 8h2v12h-2zm-4-4h2v2h-2zM4 16h2v2H4z\"/>",
+    "flag": "<path d=\"M4 2h2v20H4z\"/> <path d=\"M4 4h16v2H4zm12 2h2v2h-2zm-2 2h2v2h-2zm2 2h2v2h-2zM4 12h16v2H4z\"/>",
+    "clock": "<path d=\"M6 2h12v2H6zM2 6h2v12H2zm18 0h2v12h-2zm-2-2h2v2h-2zM4 4h2v2H4zm2 18h12v-2H6zm12-2h2v-2h-2zM4 20h2v-2H4zm7-14h2v7h-2zm2 7h2v2h-2zm2 2h2v2h-2z\"/>",
+    "hourglass": "<path d=\"M16 22H8v-2h8v2Zm-8-2H6v-4h2v4Zm10 0h-2v-4h2v4Zm-8-4H8v-2h2v2Zm6 0h-2v-2h2v2Zm-6-6h4v4h-4v-4Zm0 0H8V8h2v2Zm6 0h-2V8h2v2ZM8 8H6V4h2v4Zm10 0h-2V4h2v4Zm-2-4H8V2h8v2Z\"/>",
+    "eye": "<path d=\"M16 20H8v-2h8v2Zm-8-2H4v-2h4v2Zm12 0h-4v-2h4v2ZM4 16H2v-2h2v2Zm10-6h-2v2h2v-2h2v4h-2v2h-4v-2H8v-4h2V8h4v2Zm8 6h-2v-2h2v2ZM2 14H0v-4h2v4Zm22 0h-2v-4h2v4ZM4 10H2V8h2v2Zm18 0h-2V8h2v2ZM8 8H4V6h4v2Zm12 0h-4V6h4v2Zm-4-2H8V4h8v2Z\"/>",
+    "gift": "<path d=\"M4 6h16v2H4zM2 8h2v4H2zm2 4h16v2H4zm16-4h2v4h-2zM6 4h2v2H6zm2-2h3v2H8zm3 2h2v2h-2zm2-2h3v2h-3zm3 2h2v2h-2zM4 14h2v6H4zm2 6h12v2H6zm12-6h2v6h-2zm-7-6h2v4h-2zm0 6h2v6h-2z\"/>",
+    "door-closed": "<path d=\"M3 19h18v2H3zM5 5h2v14H5zm2-2h10v2H7zm10 2h2v14h-2zm-8 6h2v2H9z\"/>",
+    "coins": "<path d=\"M6 2h6v2H6zM4 4h2v2H4zm8 0h2v2h-2zm-8 8h2v2H4zm8 0h2v2h-2zm-6 2h6v2H6zM2 6h2v6H2zm12 0h2v6h-2z\"/> <path d=\"M14 8h4v2h-4zm-4 10h2v2h-2zm8-8h2v2h-2zm-6 10h2v2h-2zm6-2h2v2h-2z\"/> <path d=\"M12 20h6v2h-6zm-4-6h2v4H8zm12-2h2v6h-2zM7 6h4v2H7z\"/> <path d=\"M9 6h2v6H9zm6 8h2v4h-2zm-1-2h3v2h-3z\"/>",
+    "goal": "<path d=\"M6 2h2v2H6zm0 18h12v2H6zm12-2h2v2h-2zM4 18h2v2H4zM4 4h2v2H4zm16 10h2v4h-2zM2 6h2v12H2zm6 10h8v2H8zM6 8h2v8H6zm10 6h2v2h-2zM10 2h2v12h-2z\"/> <path d=\"M10 2h6v2h-6zm0 6h6v2h-6zm6-4h6v2h-6zm0 6h6v2h-6zm4-4h2v4h-2z\"/>",
+    "map": "<path d=\"M4 20h2v2H2V6h2v14Zm12 0h2v2h-4v-2h-2v-2h2V8h-2V6h4v14Zm-8 0H6v-2h2v2Zm12 0h-2v-2h2v2ZM10 4h2v2h-2v10h2v2H8V4H6V2h4v2Zm12 14h-2V4h-2V2h4v16ZM6 6H4V4h2v2Zm12 0h-2V4h2v2Z\"/>"
   };
   window.PixelIcon = function (name, cls) {
-    var body = P[name];
+    var body = P[name] || P["list-box"];
     if (!body) return "";
     return '<svg class="' + (cls || "icon") + '" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" focusable="false">' + body + "</svg>";
   };

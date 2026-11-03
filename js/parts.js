@@ -304,6 +304,9 @@
 
   /* はこの アイコン（文字と いっしょに 出す。色だけで 区別しない） */
   function decorate(scope) {
+    scope.querySelectorAll(".js-icon[data-icon]").forEach(function (el) {
+      el.outerHTML = icon(el.getAttribute("data-icon"));
+    });
     var map = [
       [".with-adult", "users"],
       [".box-alert > .box-title", "warning-diamond"],

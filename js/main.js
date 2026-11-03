@@ -50,6 +50,9 @@
     var title = el("a", { class: "site-title", href: url("index.html") }, ICONS.logo + "<span>" + siteName + "</span>");
     wrap.appendChild(title);
     var tools = el("div", { class: "header-tools" });
+    if (window.PixelIcon) {
+      tools.appendChild(el("a", { class: "btn btn-small btn-diamond", href: url("pages/search.html") }, window.PixelIcon("search") + "<span>さがす</span>"));
+    }
     tools.appendChild(buildFuriganaButton());
     if (isKids) {
       var yomi = buildYomiageButton();
