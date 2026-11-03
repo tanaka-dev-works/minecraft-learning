@@ -38,6 +38,14 @@
         body: norm(plain(r.what || ""))
       });
     });
+    (data.levels || []).filter(function (l) { return l.ready; }).forEach(function (l) {
+      items.push({ title: "レベル" + l.id + "　" + plain(l.title), sub: plain(l.goal), href: l.page, kind: "レベル", icon: "flag",
+        keys: ["れべる" + l.id, plain(l.title)].map(norm), body: norm(plain(l.goal)) });
+    });
+    (data.works || []).forEach(function (w) {
+      items.push({ title: plain(w.title), sub: "レベル" + w.level + " の さくひん", href: w.href, kind: "さくひん", icon: "star",
+        keys: [plain(w.title)].concat(w.yomi || []).map(norm), body: "" });
+    });
     (data.pages || []).filter(function (p) { return p.ready; }).forEach(function (p) {
       items.push({
         title: plain(p.title), sub: plain(p.sub || ""), href: p.href, kind: "ページ", icon: p.icon || "article",

@@ -17,21 +17,21 @@ window.SITE_DATA = {
       title: "コマンドを うって みよう",
       goal: "チャットで あさに したり はれに したり できる",
       page: "pages/level1.html",
-      ready: false
+      ready: true
     },
     {
       id: 2,
       title: "ばしょと あいてを きめよう",
       goal: "<ruby>目<rt>め</rt></ruby>の <ruby>前<rt>まえ</rt></ruby>に ブロックを おける",
       page: "pages/level2.html",
-      ready: false
+      ready: true
     },
     {
       id: 3,
       title: "コマンドブロックを うごかそう",
       goal: "ボタンを おすと ダイヤモンドが <ruby>出<rt>で</rt></ruby>る",
       page: "pages/level3.html",
-      ready: false
+      ready: true
     },
     {
       id: 4,
@@ -65,7 +65,7 @@ window.SITE_DATA = {
     { id: "command-blocks", title: "コマンドブロックずかん", href: "pages/command-blocks.html", menu: "lookup", icon: "blocks", color: "btn-diamond", yomi: ["こまんどぶろっく", "いんぱるす", "ちぇーん", "りぴーと"], sub: "インパルス・チェーン・リピート", ready: false },
     { id: "troubleshooting", title: "トラブル かいけつ", href: "pages/troubleshooting.html", menu: "lookup", icon: "bug", color: "btn-sky", yomi: ["とらぶる", "うごかない", "こまった", "でばっぐ"], sub: "うごかない ときは ここ", ready: false },
     { id: "errors", title: "エラーずかん", href: "pages/errors.html", menu: "lookup", icon: "warning-diamond", color: "btn-sky", yomi: ["えらー", "あかい もじ"], sub: "あかい もじが 出たら", ready: false },
-    { id: "quiz", title: "クイズ", href: "pages/quiz.html", menu: "lookup", icon: "circle-question", color: "btn-sky", yomi: ["くいず", "もんだい"], sub: "レベルごとの もんだい", ready: false },
+    { id: "quiz", title: "クイズ", href: "pages/quiz.html", menu: "lookup", icon: "circle-question", color: "btn-sky", yomi: ["くいず", "もんだい"], sub: "レベルごとの もんだい", ready: true },
     { id: "programming", title: "プログラミングって なに？", href: "pages/programming.html", menu: "lookup", icon: "gamepad", color: "btn-sky", yomi: ["ぷろぐらみんぐ", "めいれい", "じゅんばん", "もし", "くりかえし"], sub: "まとめ", ready: false },
     { id: "cheatsheet", title: "はやみひょう（コマンド）", href: "pages/cheatsheet.html", menu: "lookup", icon: "list-box", color: "btn-grass", yomi: ["はやみひょう", "まとめ"], sub: "1まいで ぜんぶ", ready: false },
     { id: "cheatsheet-blocks", title: "はやみひょう（ブロックの せってい）", href: "pages/cheatsheet-blocks.html", menu: "lookup", icon: "list-box", color: "btn-grass", yomi: ["はやみひょう", "せってい"], sub: "コマンドブロックの せってい", ready: false },
@@ -77,7 +77,14 @@ window.SITE_DATA = {
     { id: "checklist", title: "実機チェックリスト", href: "pages/checklist.html", menu: "parents", icon: "check", color: "btn-grass", yomi: ["ちぇっくりすと", "じっき"], sub: "Switch で試した記録", ready: false }
   ],
 
+  /* さくひん（作り方ページ）。stamp:true の さくひんで 「できた！」を おすと レベルクリア */
+  works: [
+    { id: "morning", level: 1, title: "あさに なあれ・はれに なあれ", href: "works/morning.html", minutes: 10, stamp: true, yomi: ["あさ", "はれ", "てんき"] },
+    { id: "block-magic", level: 2, title: "ブロック マジック", href: "works/block-magic.html", minutes: 15, stamp: true, yomi: ["ぶろっく", "まじっく", "せっとぶろっく"] },
+    { id: "diamond-button", level: 3, title: "ボタンで ダイヤモンド", href: "works/diamond-button.html", minutes: 15, stamp: true, yomi: ["だいやもんど", "ぼたん"] },
+    { id: "message", level: 3, title: "メッセージ そうち", href: "works/message.html", minutes: 15, stamp: false, yomi: ["めっせーじ", "たいとる", "かんあつばん"] }
+  ],
+
   commands: [],
-  works: [],
   quizzes: []
 };

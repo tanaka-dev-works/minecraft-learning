@@ -15,7 +15,7 @@ const { chromium } = createRequire(import.meta.url)("playwright");
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const BASE = "/minecraft-learning/";
-const PAGES = ["index.html", "404.html", "pages/stamps.html", "pages/parts.html", "pages/commands.html", "pages/command.html?id=tp", "pages/command.html?id=scoreboard", "pages/command.html?id=nope", "pages/search.html?q=てれぽーと", "pages/dont.html", "pages/syntax.html", "pages/selectors.html", "pages/start.html", "pages/parents.html"];
+const PAGES = ["index.html", "404.html", "pages/stamps.html", "pages/parts.html", "pages/commands.html", "pages/command.html?id=tp", "pages/command.html?id=scoreboard", "pages/command.html?id=nope", "pages/search.html?q=てれぽーと", "pages/dont.html", "pages/syntax.html", "pages/selectors.html", "pages/start.html", "pages/parents.html", "pages/level1.html", "pages/level2.html", "pages/level3.html", "works/morning.html", "works/block-magic.html", "works/diamond-button.html", "works/message.html", "pages/quiz.html", "pages/quiz.html?level=1", "pages/quiz.html?level=2", "pages/quiz.html?level=3"];
 const WIDTHS = [
   { name: "phone", width: 375, height: 740 },
   { name: "tablet-portrait", width: 768, height: 1024 },
@@ -259,6 +259,59 @@ for (const link of allLinks) {
     if (tables) fail(`${p}: 子ども向けページに表がある`);
   }
   if (errors.length) fail("ずかんでエラー: " + errors.join(" / "));
+  await context.close();
+}
+
+// 9b) さくひん・クイズ：ステップを最後まで進めて「できた！」、クイズに正解
+{
+  const context = await browser.newContext({ viewport: { width: 768, height: 1024 }, hasTouch: true });
+  const page = await context.newPage();
+  const errors = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+  const works = await (async () => { await page.goto(origin + BASE + "index.html"); return page.evaluate(() => window.SITE_DATA.works); })();
+  for (const w of works) {
+    await page.goto(origin + BASE + w.href);
+    const total = Number((await page.locator(".step-count").textContent()).split("/")[1]);
+    for (let i = 1; i < total; i++) {
+      const stampBtn = page.locator(".step:not([hidden]) [data-stamp]");
+      if (await stampBtn.count()) break;
+      await page.locator(".step-next").click();
+    }
+    const has = await page.locator(".step:not([hidden]) [data-stamp]").count();
+    if (w.stamp && !has) fail(`${w.href}: 「できた！」ボタンが ない`);
+    if (w.stamp && has) {
+      await page.locator(".step:not([hidden]) [data-stamp]").click();
+      await page.locator(".celebrate [data-close]").click();
+    }
+    // 設置図・設定カード（レベル3 以上）
+    if (w.level >= 3) {
+      const d = await page.locator(".diagram").count();
+      const cb = await page.locator(".cb-card").count();
+      if (!d || !cb) fail(`${w.href}: 設置図(${d}) か 設定カード(${cb}) が ない`);
+    }
+  }
+  await page.goto(origin + BASE + "index.html");
+  const states = await page.locator("#sugoroku .square").evaluateAll((els) => els.map((e) => e.dataset.state));
+  if (states.slice(0, 3).join() !== "clear,clear,clear") fail(`レベル1〜3 が クリアに ならない: ${states.join()}`);
+  // クイズ：ぜんぶ 正解できる
+  for (const lv of [1, 2, 3]) {
+    await page.goto(origin + BASE + "pages/quiz.html?level=" + lv);
+    const answers = await page.evaluate((lv) => window.SITE_DATA.quizzes.filter((q) => q.level === lv).map((q) => q.type === "think" ? -1 : q.answer), lv);
+    if (answers.length !== 3) fail(`レベル${lv} の クイズが 3もん ではない`);
+    for (let i = 0; i < answers.length; i++) {
+      const card = page.locator(`.quiz-card[data-q="${i}"]`);
+      if (answers[i] === -1) await card.locator(".quiz-did").click();
+      else {
+        // まず まちがえて ヒントを 出し、つぎに 正解
+        const wrong = answers[i] === 0 ? 1 : 0;
+        await card.locator(`.quiz-choice[data-i="${wrong}"]`).click();
+        if (!(await card.locator(".box-hint").count())) fail(`レベル${lv} もんだい${i + 1}: ヒントが 出ない`);
+        await card.locator(`.quiz-choice[data-i="${answers[i]}"]`).click();
+      }
+    }
+    if (!(await page.locator(".quiz-total .guide").count())) fail(`レベル${lv}: ぜんぶ せいかい が 出ない`);
+  }
+  if (errors.length) fail("さくひん・クイズで エラー: " + errors.join(" / "));
   await context.close();
 }
 

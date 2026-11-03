@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>クイズ｜マイクラ コマンド ぼうけん</title>
+  <link rel="icon" href="../images/guide.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-root=".." data-kids="true" data-crumbs='[["しらべる", "pages/search.html"], ["クイズ", ""]]'>
+  <main id="main" class="wrap" data-yomi>
+    <h1>たしかめ クイズ</h1>
+    <div id="quiz-area"></div>
+  </main>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/data-commands.js"></script>
+  <script src="../js/icons.js"></script>
+  <script src="../js/progress.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/parts.js"></script>
+  <script src="../js/data-quiz.js"></script>
+  <script src="../js/quiz.js"></script>
+  <script>
+  (function () {
+    var lv = new URLSearchParams(location.search).get("level");
+    var area = document.getElementById("quiz-area");
+    var levels = window.SITE_DATA.levels;
+    var has = function (id) { return (window.SITE_DATA.quizzes || []).some(function (q) { return String(q.level) === String(id); }); };
+    if (lv && has(lv)) {
+      var L = levels.filter(function (l) { return String(l.id) === lv; })[0];
+      area.innerHTML = '<h2><span class="lv-chip">レベル' + lv + '</span>' + (L ? L.title : "") + '</h2><div class="quiz" data-level="' + lv + '"></div>' +
+        '<div class="next-links"><a class="btn btn-sky" href="quiz.html">' + window.PixelIcon("list-box") + '<span>ほかの レベルの クイズ</span></a>' +
+        (L && L.ready ? '<a class="btn btn-grass" href="../' + L.page + '">' + window.PixelIcon("arrow-left") + '<span>レベル' + lv + 'に もどる</span></a>' : "") + '</div>';
+    } else {
+      area.innerHTML = '<div class="guide"><p>どの レベルの クイズに する？</p></div><div class="menu-grid">' +
+        levels.filter(function (l) { return has(l.id); }).map(function (l) {
+          return '<a class="btn btn-sky" href="quiz.html?level=' + l.id + '">' + window.PixelIcon("circle-question") + '<span>レベル' + l.id + '</span></a>';
+        }).join("") + '</div>';
+    }
+    window.SiteParts.init(area);
+    window.SiteQuiz.render && area.querySelectorAll(".quiz").forEach(window.SiteQuiz.render);
+  })();
+  </script>
+</body>
+</html>
