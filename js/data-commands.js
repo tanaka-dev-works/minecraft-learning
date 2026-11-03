@@ -559,7 +559,7 @@
         { cmd: "/execute if score @p point matches 10.. run say win", result: "10<ruby>点<rt>てん</rt></ruby> いじょう なら win と <ruby>出<rt>で</rt></ruby>る。" }
       ],
       result: "run の うしろの コマンドが、 きめた <ruby>人<rt>ひと</rt></ruby>と ばしょで うごく。",
-      careful: "あたらしい かきかた（as … at … run …）を つかおう。 むかしの かきかた（/execute @p ~ ~ ~ …）は うごかないよ。",
+      careful: "あたらしい かきかた（as … at … run …）を つかおう。 むかしの かきかた（/execute @p ~ ~ ~ …）は つかわないよ。",
       related: ["testfor", "scoreboard", "tag"],
       parents: {
         syntax: ["/execute as <origin: target> <chainedCommand>", "/execute at <origin: target> <chainedCommand>", "/execute positioned <position: x y z> <chainedCommand>", "/execute <if|unless> entity <target: target> [chainedCommand]", "/execute <if|unless> block <position: x y z> <block: Block> [chainedCommand]", "/execute <if|unless> score <target> <objective> matches <range> [chainedCommand]", "/execute run <command>"],

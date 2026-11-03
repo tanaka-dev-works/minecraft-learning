@@ -42,17 +42,41 @@ node tests/check.mjs
 
 スマホ 375px／タブレット縦 768px／横 1024px での横スクロール、ボタンの大きさ（60px 以上）、リンク切れ、`file://` で開いたとき、localStorage が使えないときの動きを確かめます。スクリーンショットは `tests/screenshots/` に保存されます（git には入りません）。
 
-## フォルダ構成（フェーズ1の時点）
+## フォルダ構成
 
 ```
-index.html     トップ（レベルのすごろく）
-404.html       ページが見つからないとき
-css/style.css  共通の見た目（:root に色・文字サイズ）
-js/data.js     サイトのデータ（レベル・コマンド・作品・クイズ）
-js/main.js     ヘッダー・パンくず・フッター・よみあげ
-js/progress.js スタンプなどの記録（localStorage）
-js/top.js      トップのすごろく
-images/        自作のドット絵（案内キャラは仮）
-docs/          フェーズ計画と設計書
-tests/         自動チェック
+index.html              トップ（レベルのすごろく）
+404.html                ページが見つからないとき
+pages/                  子ども向け・保護者向けのページ
+  level1〜6.html        レベル（1ステップ1画面）
+  commands.html         コマンドずかん（一覧）／command.html?id=… くわしいページ
+  search.html           さがす
+  syntax.html selectors.html command-blocks.html troubleshooting.html errors.html programming.html
+  quiz.html             クイズ（quiz.html?level=1 など）
+  cheatsheet.html cheatsheet-blocks.html  はやみひょう（A4 印刷できる）
+  dont.html             やってはいけないコマンド
+  stamps.html           スタンプちょう
+  start.html parents.html checklist.html  保護者向け
+  parts.html            部品の見本（開発用）
+works/                  作品の作り方
+css/style.css           共通の見た目（:root に色・文字サイズ）／css/print.css 印刷用
+js/data.js              サイトのデータ（名前・キャラ・レベル・ページ・作品）
+js/data-commands.js     基本編のコマンド
+js/data-quiz.js         クイズ
+js/data-checklist.js    実機で確かめること
+js/main.js              ヘッダー・パンくず・フッター・ふりがな・よみあげ
+js/parts.js             文字タイル・キーボード図・ステップ・キャラ・スタンプ
+js/progress.js          スタンプなどの記録（localStorage）
+js/commands.js search.js quiz.js top.js icons.js
+fonts/                  BIZ UDゴシック・DotGothic16（同梱、OFL）
+images/                 自作のドット絵（案内キャラは仮）
+licenses/               同梱フォント・アイコンのライセンス
+docs/                   フェーズ計画・設計書・公式リファレンスの控え・チェック結果
+tests/check.mjs         自動チェック
+tools/page.py           ページのひな形を作る開発用スクリプト（サイトの動作には不要）
 ```
+
+## 名前やキャラを変えるとき
+
+- サイト名：`js/data.js` の `siteName`（各ページの `<title>` は `tools/page.py` の `SITE` も変えてページを作り直す）
+- 案内キャラ：`js/data.js` の `guide`（名前）と `images/guide.svg`・`images/guide-happy.svg`（絵）

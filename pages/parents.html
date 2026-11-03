@@ -17,6 +17,7 @@
       <a class="btn btn-grass" href="start.html"><span class="js-icon" data-icon="gamepad"></span><span>はじめに（ワールドの準備）</span></a>
       <a class="btn btn-dirt" href="dont.html"><span class="js-icon" data-icon="warning-diamond"></span><span>やってはいけないコマンド</span></a>
       <a class="btn btn-diamond" href="stamps.html"><span class="js-icon" data-icon="trophy"></span><span>お子さんのスタンプ</span></a>
+      <a class="btn btn-grass" href="checklist.html"><span class="js-icon" data-icon="check"></span><span>実機チェックリスト</span></a>
     </div>
 
     <h2>いまのレベルとスタンプ</h2>
@@ -50,6 +51,14 @@
     <table class="parents-table">
       <thead><tr><th>レベル</th><th>つまずきやすい所</th><th>声のかけ方</th><th>時間</th></tr></thead>
       <tbody><tr><th>レベル1<br>コマンドを打ってみよう</th><td>英数モードへの切り替え、記号（/）の場所。全角で打ってしまう。</td><td>「どのボタンで切り替えた？」と一緒に探す。1回成功したら大げさにほめる。</td><td>15〜20分</td></tr><tr><th>レベル2<br>場所と相手を決めよう</th><td>~ と数字の間のスペース、@ の出し方、座標の意味。</td><td>座標表示をONにして「Yはどう変わった？」と見比べる。</td><td>20〜30分</td></tr><tr><th>レベル3<br>コマンドブロックを動かそう</th><td>コマンドブロックの入手と設定画面の操作。ボタンをブロックに付ける。</td><td>設定画面の項目は大人が先に一度触っておくと説明しやすい。</td><td>20〜30分</td></tr><tr><th>レベル4<br>命令をつなげよう</th><td>チェーンの矢印の向き。先頭ブロックへの向きの合わせ方。</td><td>「矢印はどっちを向いてる？」と横と上から見る。</td><td>30分</td></tr><tr><th>レベル5<br>ずっと見張らせよう</th><td>リピート＋常にアクティブ、条件付きの意味。重くなる設定ミス。</td><td>止め方（ブロックを壊す）を先に練習しておく。</td><td>30〜40分</td></tr><tr><th>レベル6<br>自分のゲームを作ろう</th><td>/scoreboard の長いコマンド、objectives を先に作る順番。</td><td>1つずつ動作確認する「まちがいさがし（デバッグ）」を一緒に。</td><td>40分〜（2回に分けても可）</td></tr></tbody>
+    </table>
+    </div>
+
+    <h2>コマンド一覧表（基本編）</h2>
+    <div class="table-scroll">
+    <table class="parents-table" id="cmd-table">
+      <thead><tr><th>レベル</th><th>コマンド</th><th>何ができる？</th><th>いちばん短い例</th><th>どこで使う</th><th>確認状況</th></tr></thead>
+      <tbody></tbody>
     </table>
     </div>
 
@@ -88,6 +97,16 @@
       "スタンプ " + got.length + " / " + levels.length + "。" +
       (next === null ? "全レベルクリア済みです。" : "次はレベル" + next + "です。") +
       "「おぼえた」を押したコマンド：" + learned + "個（この端末の記録です）。";
+    var W = { chat: "チャット", block: "コマンドブロック", both: "どちらでも" };
+    var S = { doc: "公式ドキュメントで確認済", device: "実機で確認済", unknown: "未確認" };
+    var plain = function (h) { return h.replace(/<rt>.*?<\/rt>/g, "").replace(/<[^>]+>/g, ""); };
+    document.querySelector("#cmd-table tbody").innerHTML = window.SITE_DATA.commands.slice().sort(function (a, b) {
+      var ex = function (c) { return c.examples.reduce(function (m, e) { return e.cmd.length < m.length ? e.cmd : m; }, c.examples[0].cmd); };
+      a._ex = ex(a); b._ex = ex(b); return a.level - b.level;
+    }).map(function (c) {
+      return "<tr><td>" + c.level + '</td><td><a href="command.html?id=' + c.id + '"><code>' + c.name + "</code></a></td><td>" + plain(c.what) +
+        "</td><td><code>" + c._ex + "</code></td><td>" + W[c.where] + "</td><td>" + S[c.status] + "</td></tr>";
+    }).join("");
   })();
   </script>
 </body>

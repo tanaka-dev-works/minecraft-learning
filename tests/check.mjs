@@ -15,7 +15,7 @@ const { chromium } = createRequire(import.meta.url)("playwright");
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const BASE = "/minecraft-learning/";
-const PAGES = ["index.html", "404.html", "pages/stamps.html", "pages/parts.html", "pages/commands.html", "pages/command.html?id=tp", "pages/command.html?id=scoreboard", "pages/command.html?id=nope", "pages/search.html?q=てれぽーと", "pages/dont.html", "pages/syntax.html", "pages/selectors.html", "pages/start.html", "pages/parents.html", "pages/level1.html", "pages/level2.html", "pages/level3.html", "works/morning.html", "works/block-magic.html", "works/diamond-button.html", "works/message.html", "pages/quiz.html", "pages/quiz.html?level=1", "pages/quiz.html?level=2", "pages/quiz.html?level=3", "pages/level4.html", "pages/level5.html", "pages/level6.html", "works/teleport.html", "works/item-giver.html", "works/auto-door.html", "works/minigame.html", "pages/quiz.html?level=6", "pages/command-blocks.html", "pages/troubleshooting.html", "pages/errors.html", "pages/programming.html"];
+const PAGES = ["index.html", "404.html", "pages/stamps.html", "pages/parts.html", "pages/commands.html", "pages/command.html?id=tp", "pages/command.html?id=scoreboard", "pages/command.html?id=nope", "pages/search.html?q=てれぽーと", "pages/dont.html", "pages/syntax.html", "pages/selectors.html", "pages/start.html", "pages/parents.html", "pages/level1.html", "pages/level2.html", "pages/level3.html", "works/morning.html", "works/block-magic.html", "works/diamond-button.html", "works/message.html", "pages/quiz.html", "pages/quiz.html?level=1", "pages/quiz.html?level=2", "pages/quiz.html?level=3", "pages/level4.html", "pages/level5.html", "pages/level6.html", "works/teleport.html", "works/item-giver.html", "works/auto-door.html", "works/minigame.html", "pages/quiz.html?level=6", "pages/command-blocks.html", "pages/troubleshooting.html", "pages/errors.html", "pages/programming.html", "pages/cheatsheet.html", "pages/cheatsheet-blocks.html", "pages/checklist.html"];
 const WIDTHS = [
   { name: "phone", width: 375, height: 740 },
   { name: "tablet-portrait", width: 768, height: 1024 },
@@ -327,12 +327,35 @@ for (const link of allLinks) {
   await context.close();
 }
 
+// 9d) 印刷：はやみひょうが A4 1まいに おさまるか、チェックリストが保存されるか
+{
+  const context = await browser.newContext();
+  const page = await context.newPage();
+  for (const p of ["pages/cheatsheet.html", "pages/cheatsheet-blocks.html"]) {
+    await page.goto(origin + BASE + p);
+    await page.waitForTimeout(300);
+    const pdf = await page.pdf({ format: "A4", printBackground: true });
+    const pages = (pdf.toString("latin1").match(/\/Type\s*\/Page[^s]/g) || []).length;
+    if (pages !== 1) fail(`${p}: 印刷すると ${pages} ページ（A4 1まいに おさまらない）`);
+  }
+  await page.goto(origin + BASE + "pages/checklist.html");
+  await page.fill("#cl-version", "1.21.99");
+  await page.locator('.cl-row[data-key="cmd:tp"] input[value="ok"]').check();
+  await page.reload();
+  const v = await page.inputValue("#cl-version");
+  const ok = await page.locator('.cl-row[data-key="cmd:tp"] input[value="ok"]').isChecked();
+  if (v !== "1.21.99" || !ok) fail("チェックリストが 保存されない");
+  const rows = await page.locator(".cl-row").count();
+  if (rows < 23 + 8 + 20) fail(`チェックリストの行が すくない: ${rows}`);
+  await context.close();
+}
+
 // 10) 子ども向けページ：1年生の漢字 以外には ふりがな（ruby）が ついているか
 {
   const GRADE1 = "一右雨円王音下火花貝学気九休玉金空月犬見五口校左三山子四糸字耳七車手十出女小上森人水正生青夕石赤千川先早草足村大男竹中虫町天田土二日入年白八百文木本名目立力林六";
   const context = await browser.newContext({ viewport: { width: 768, height: 1024 } });
   const page = await context.newPage();
-  const kidsPages = PAGES.filter((p) => !/start|parents|parts|404/.test(p));
+  const kidsPages = PAGES.filter((p) => !/start|parents|parts|404|checklist/.test(p));
   for (const p of kidsPages) {
     await page.goto(origin + BASE + p);
     const found = await page.evaluate((g1) => {

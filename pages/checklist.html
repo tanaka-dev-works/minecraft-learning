@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>実機チェックリスト｜マイクラ コマンド ぼうけん</title>
+  <link rel="icon" href="../images/guide.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/print.css" media="print">
+</head>
+<body data-root=".." data-kids="false" data-crumbs='[["おうちの人へ", "pages/parents.html"], ["実機チェックリスト", ""]]'>
+  <main id="main" class="wrap">
+    <h1>実機チェックリスト</h1>
+    <p>Switch で1つずつ試して、結果を記録するためのページです。記録はこの端末（ブラウザ）にだけ保存されます。印刷して紙に書き込むこともできます。</p>
+    <p class="no-print"><button type="button" class="btn btn-small" onclick="window.print()"><span class="js-icon" data-icon="list-box"></span><span>印刷</span></button>
+      <button type="button" class="btn btn-small" id="cl-export"><span class="js-icon" data-icon="copy"></span><span>記録をテキストでコピー</span></button></p>
+
+    <h2>バージョン</h2>
+    <p><label for="cl-version">タイトル画面の右下などに出るバージョン番号：</label><br>
+    <input id="cl-version" class="cl-input" type="text" inputmode="decimal" placeholder="例：1.21.xx"></p>
+    <p><label for="cl-date">試した日：</label><br><input id="cl-date" class="cl-input" type="date"></p>
+
+    <h2>コマンド（基本編）</h2>
+    <div id="cl-commands" class="cl-list"></div>
+    <h2>作品</h2>
+    <div id="cl-works" class="cl-list"></div>
+    <h2>サイトで【要実機確認】としていること</h2>
+    <div id="cl-unverified" class="cl-list"></div>
+  </main>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/data-commands.js"></script>
+  <script src="../js/icons.js"></script>
+  <script src="../js/progress.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/parts.js"></script>
+  <script src="../js/data-checklist.js"></script>
+  <script>
+  (function () {
+    var KEY = "mcl-checklist-v1";
+    var state = {};
+    try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch (e) { state = {}; }
+    function save() { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+    var d = window.SITE_DATA;
+    function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+    function row(key, label, sub) {
+      var v = state[key] || {};
+      var r = function (val, text) {
+        return '<label class="cl-opt"><input type="radio" name="' + key + '" value="' + val + '"' + (v.r === val ? " checked" : "") + '> ' + text + "</label>";
+      };
+      return '<div class="cl-row" data-key="' + key + '"><p class="cl-label">' + label + (sub ? '<br><code class="cl-sub">' + esc(sub) + "</code>" : "") + "</p>" +
+        '<div class="cl-opts">' + r("ok", "動いた") + r("ng", "動かなかった") + r("skip", "未実施") + "</div>" +
+        '<input class="cl-input cl-memo" type="text" placeholder="メモ" value="' + esc(v.m || "") + '"></div>';
+    }
+    document.getElementById("cl-commands").innerHTML = d.commands.map(function (c) {
+      return row("cmd:" + c.id, c.name + "（レベル" + c.level + "）", c.examples.map(function (e) { return e.cmd; }).join("　"));
+    }).join("");
+    document.getElementById("cl-works").innerHTML = d.works.map(function (w) {
+      return row("work:" + w.id, w.title + "（レベル" + w.level + "）");
+    }).join("");
+    var u = "", n = 0;
+    (d.unverified || []).forEach(function (g) {
+      u += "<h3>" + g.group + "</h3>";
+      g.items.forEach(function (it) { n++; u += row("u:" + n, it); });
+    });
+    document.getElementById("cl-unverified").innerHTML = u;
+
+    var ver = document.getElementById("cl-version"), date = document.getElementById("cl-date");
+    ver.value = state.version || ""; date.value = state.date || "";
+    ver.addEventListener("input", function () { state.version = ver.value; save(); });
+    date.addEventListener("input", function () { state.date = date.value; save(); });
+    document.querySelector("main").addEventListener("change", function (e) {
+      var rowEl = e.target.closest(".cl-row"); if (!rowEl) return;
+      var k = rowEl.getAttribute("data-key"); state[k] = state[k] || {};
+      if (e.target.type === "radio") state[k].r = e.target.value;
+      save();
+    });
+    document.querySelector("main").addEventListener("input", function (e) {
+      if (!e.target.classList.contains("cl-memo")) return;
+      var k = e.target.closest(".cl-row").getAttribute("data-key"); state[k] = state[k] || {};
+      state[k].m = e.target.value; save();
+    });
+    document.getElementById("cl-export").addEventListener("click", function () {
+      var lines = ["バージョン: " + (state.version || ""), "日付: " + (state.date || "")];
+      document.querySelectorAll(".cl-row").forEach(function (r) {
+        var v = state[r.getAttribute("data-key")] || {};
+        if (!v.r && !v.m) return;
+        lines.push("- " + r.querySelector(".cl-label").textContent + " … " + ({ ok: "動いた", ng: "動かなかった", skip: "未実施" }[v.r] || "") + (v.m ? "（" + v.m + "）" : ""));
+      });
+      var text = lines.join("\n");
+      var b = this;
+      if (navigator.clipboard) navigator.clipboard.writeText(text).then(function () { b.lastChild.textContent = "コピーしました"; }, function () { b.lastChild.textContent = "コピーできませんでした"; });
+    });
+  })();
+  </script>
+</body>
+</html>

@@ -67,14 +67,14 @@ window.SITE_DATA = {
     { id: "errors", title: "エラーずかん", href: "pages/errors.html", menu: "lookup", icon: "warning-diamond", color: "btn-sky", yomi: ["えらー", "あかい もじ"], sub: "あかい もじが 出たら", ready: true },
     { id: "quiz", title: "クイズ", href: "pages/quiz.html", menu: "lookup", icon: "circle-question", color: "btn-sky", yomi: ["くいず", "もんだい"], sub: "レベルごとの もんだい", ready: true },
     { id: "programming", title: "プログラミングって なに？", href: "pages/programming.html", menu: "lookup", icon: "gamepad", color: "btn-sky", yomi: ["ぷろぐらみんぐ", "めいれい", "じゅんばん", "もし", "くりかえし"], sub: "まとめ", ready: true },
-    { id: "cheatsheet", title: "はやみひょう（コマンド）", href: "pages/cheatsheet.html", menu: "lookup", icon: "list-box", color: "btn-grass", yomi: ["はやみひょう", "まとめ"], sub: "1まいで ぜんぶ", ready: false },
-    { id: "cheatsheet-blocks", title: "はやみひょう（ブロックの せってい）", href: "pages/cheatsheet-blocks.html", menu: "lookup", icon: "list-box", color: "btn-grass", yomi: ["はやみひょう", "せってい"], sub: "コマンドブロックの せってい", ready: false },
+    { id: "cheatsheet", title: "はやみひょう（コマンド）", href: "pages/cheatsheet.html", menu: "lookup", icon: "list-box", color: "btn-grass", yomi: ["はやみひょう", "まとめ"], sub: "1まいで ぜんぶ", ready: true },
+    { id: "cheatsheet-blocks", title: "はやみひょう（ブロックの せってい）", href: "pages/cheatsheet-blocks.html", menu: "lookup", icon: "list-box", color: "btn-grass", yomi: ["はやみひょう", "せってい"], sub: "コマンドブロックの せってい", ready: true },
     { id: "reference", title: "コマンド大ずかん", href: "pages/reference.html", menu: "lookup", icon: "book-open", color: "btn-grass", yomi: ["だいずかん", "おうよう", "ぜんぶ"], sub: "もっと しりたい ひとへ", ready: false },
     { id: "dont", title: "やっては いけない コマンド", href: "pages/dont.html", menu: "lookup", icon: "warning-diamond", color: "btn-dirt", yomi: ["だめ", "あぶない", "ちゅうい", "やってはいけない"], sub: "まもって あそぼう", ready: true },
     { id: "stamps", title: "スタンプちょう", href: "pages/stamps.html", menu: "lookup", icon: "trophy", color: "btn-dirt", yomi: ["すたんぷ"], sub: "あつめた スタンプ", ready: true },
     { id: "start", title: "はじめに（ワールドの準備）", href: "pages/start.html", menu: "parents", icon: "gamepad", color: "btn-grass", yomi: ["じゅんび", "ちーと", "わーるど"], sub: "チート・コマンドブロックの入手", ready: true },
     { id: "parents", title: "おうちの人へ（安全・声かけ）", href: "pages/parents.html", menu: "parents", icon: "users", color: "btn-grass", yomi: ["ほごしゃ", "あんぜん", "みまもり"], sub: "安全の設定・レベルごとの声かけ", ready: true },
-    { id: "checklist", title: "実機チェックリスト", href: "pages/checklist.html", menu: "parents", icon: "check", color: "btn-grass", yomi: ["ちぇっくりすと", "じっき"], sub: "Switch で試した記録", ready: false }
+    { id: "checklist", title: "実機チェックリスト", href: "pages/checklist.html", menu: "parents", icon: "check", color: "btn-grass", yomi: ["ちぇっくりすと", "じっき"], sub: "Switch で試した記録", ready: true }
   ],
 
   /* さくひん（作り方ページ）。stamp:true の さくひんで 「できた！」を おすと レベルクリア */

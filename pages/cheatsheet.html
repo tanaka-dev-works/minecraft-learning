@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>はやみひょう（コマンド）｜マイクラ コマンド ぼうけん</title>
+  <link rel="icon" href="../images/guide.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/print.css" media="print">
+</head>
+<body data-root=".." data-kids="true" data-crumbs='[["しらべる", "pages/search.html"], ["はやみひょう（コマンド）", ""]]'>
+  <main id="main" class="wrap" data-yomi>
+    <h1 class="sheet-title">コマンド はやみひょう</h1>
+    <p class="no-print"><button type="button" class="btn btn-small" onclick="window.print()"><span class="js-icon" data-icon="list-box"></span><span>いんさつ（A4）</span></button></p>
+    <div class="sheet-legend no-yomi"><span class="where-chip">チャット</span><span class="where-chip">ブロック</span><span class="where-chip">どちらでも</span> ＝ どこで つかうか</div>
+    <div id="sheet" class="sheet"></div>
+    <p class="sheet-foot">/ から はじめる・こもじ・スペースで くぎる・コマンドブロックでは @p</p>
+  </main>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/data-commands.js"></script>
+  <script src="../js/icons.js"></script>
+  <script src="../js/progress.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/parts.js"></script>
+  <script>
+  (function () {
+    var d = window.SITE_DATA, esc = window.SiteCommands ? window.SiteCommands.esc : function (s) { return s; };
+    var W = { chat: "チャット", block: "ブロック", both: "どちらでも" };
+    var html = "";
+    d.levels.forEach(function (lv) {
+      var cs = d.commands.filter(function (c) { return c.level === lv.id; });
+      if (!cs.length) return;
+      html += '<section class="sheet-lv"><h2><span class="lv-chip">レベル' + lv.id + '</span></h2><ul>';
+      cs.forEach(function (c) {
+        html += '<li><a href="command.html?id=' + c.id + '"><code class="sheet-name">' + c.name + '</code><span class="sheet-what">' + c.what.split("。")[0] + '。</span><code class="sheet-ex">' +
+          c.examples[0].cmd.replace(/&/g, "&amp;").replace(/</g, "&lt;") + '</code><span class="sheet-where">' + W[c.where] + '</span></a></li>';
+      });
+      html += "</ul></section>";
+    });
+    document.getElementById("sheet").innerHTML = html;
+  })();
+  </script>
+</body>
+</html>
