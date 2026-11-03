@@ -15,7 +15,7 @@ const { chromium } = createRequire(import.meta.url)("playwright");
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const BASE = "/minecraft-learning/";
-const PAGES = ["index.html", "404.html", "pages/stamps.html", "pages/parts.html", "pages/commands.html", "pages/command.html?id=tp", "pages/command.html?id=scoreboard", "pages/command.html?id=nope", "pages/search.html?q=てれぽーと", "pages/dont.html", "pages/syntax.html", "pages/selectors.html", "pages/start.html", "pages/parents.html", "pages/level1.html", "pages/level2.html", "pages/level3.html", "works/morning.html", "works/block-magic.html", "works/diamond-button.html", "works/message.html", "pages/quiz.html", "pages/quiz.html?level=1", "pages/quiz.html?level=2", "pages/quiz.html?level=3"];
+const PAGES = ["index.html", "404.html", "pages/stamps.html", "pages/parts.html", "pages/commands.html", "pages/command.html?id=tp", "pages/command.html?id=scoreboard", "pages/command.html?id=nope", "pages/search.html?q=てれぽーと", "pages/dont.html", "pages/syntax.html", "pages/selectors.html", "pages/start.html", "pages/parents.html", "pages/level1.html", "pages/level2.html", "pages/level3.html", "works/morning.html", "works/block-magic.html", "works/diamond-button.html", "works/message.html", "pages/quiz.html", "pages/quiz.html?level=1", "pages/quiz.html?level=2", "pages/quiz.html?level=3", "pages/level4.html", "pages/level5.html", "pages/level6.html", "works/teleport.html", "works/item-giver.html", "works/auto-door.html", "works/minigame.html", "pages/quiz.html?level=6"];
 const WIDTHS = [
   { name: "phone", width: 375, height: 740 },
   { name: "tablet-portrait", width: 768, height: 1024 },
@@ -150,7 +150,7 @@ for (const link of allLinks) {
   const page = await context.newPage();
   await page.goto(origin + BASE + "index.html");
   const states = await page.locator("#sugoroku .square").evaluateAll((els) => els.map((e) => e.dataset.state));
-  const expect = ["clear", "clear", "next", "soon", "soon", "soon"];
+  const expect = ["clear", "clear", "next", "todo", "todo", "todo"];
   if (states.join() !== expect.join()) fail(`すごろくの状態がちがう: ${states.join()}（${expect.join()} のはず）`);
   const count = await page.locator("#stamp-count").textContent();
   if (count !== "2 / 6") fail(`スタンプの数がちがう: ${count}`);
@@ -292,9 +292,9 @@ for (const link of allLinks) {
   }
   await page.goto(origin + BASE + "index.html");
   const states = await page.locator("#sugoroku .square").evaluateAll((els) => els.map((e) => e.dataset.state));
-  if (states.slice(0, 3).join() !== "clear,clear,clear") fail(`レベル1〜3 が クリアに ならない: ${states.join()}`);
+  if (states.join() !== "clear,clear,clear,clear,clear,clear") fail(`レベル1〜6 が クリアに ならない: ${states.join()}`);
   // クイズ：ぜんぶ 正解できる
-  for (const lv of [1, 2, 3]) {
+  for (const lv of [1, 2, 3, 4, 5, 6]) {
     await page.goto(origin + BASE + "pages/quiz.html?level=" + lv);
     const answers = await page.evaluate((lv) => window.SITE_DATA.quizzes.filter((q) => q.level === lv).map((q) => q.type === "think" ? -1 : q.answer), lv);
     if (answers.length !== 3) fail(`レベル${lv} の クイズが 3もん ではない`);

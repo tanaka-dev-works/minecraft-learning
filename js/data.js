@@ -38,21 +38,21 @@ window.SITE_DATA = {
       title: "めいれいを つなげよう",
       goal: "じゅんばんに うごく テレポート そうちを つくる",
       page: "pages/level4.html",
-      ready: false
+      ready: true
     },
     {
       id: 5,
       title: "ずっと <ruby>見<rt>み</rt></ruby>はらせよう",
       goal: "ちかづくと ひらく ドアを つくる",
       page: "pages/level5.html",
-      ready: false
+      ready: true
     },
     {
       id: 6,
       title: "じぶんの ゲームを つくろう",
       goal: "<ruby>点<rt>てん</rt></ruby>すうを かぞえる ミニゲームを つくる",
       page: "pages/level6.html",
-      ready: false
+      ready: true
     }
   ],
 
@@ -82,7 +82,11 @@ window.SITE_DATA = {
     { id: "morning", level: 1, title: "あさに なあれ・はれに なあれ", href: "works/morning.html", minutes: 10, stamp: true, yomi: ["あさ", "はれ", "てんき"] },
     { id: "block-magic", level: 2, title: "ブロック マジック", href: "works/block-magic.html", minutes: 15, stamp: true, yomi: ["ぶろっく", "まじっく", "せっとぶろっく"] },
     { id: "diamond-button", level: 3, title: "ボタンで ダイヤモンド", href: "works/diamond-button.html", minutes: 15, stamp: true, yomi: ["だいやもんど", "ぼたん"] },
-    { id: "message", level: 3, title: "メッセージ そうち", href: "works/message.html", minutes: 15, stamp: false, yomi: ["めっせーじ", "たいとる", "かんあつばん"] }
+    { id: "message", level: 3, title: "メッセージ そうち", href: "works/message.html", minutes: 15, stamp: false, yomi: ["めっせーじ", "たいとる", "かんあつばん"] },
+    { id: "teleport", level: 4, title: "そらとび テレポート", href: "works/teleport.html", minutes: 20, stamp: true, yomi: ["てれぽーと", "そら", "ちぇーん"] },
+    { id: "item-giver", level: 4, title: "アイテム くばり そうち", href: "works/item-giver.html", minutes: 20, stamp: false, yomi: ["あいてむ", "くばる", "どうぐ"] },
+    { id: "auto-door", level: 5, title: "じどう ドア", href: "works/auto-door.html", minutes: 30, stamp: true, yomi: ["どあ", "じどう", "りぴーと", "じょうけん"] },
+    { id: "minigame", level: 6, title: "ボタン ラリー（ミニゲーム）", href: "works/minigame.html", minutes: 40, stamp: true, yomi: ["みにげーむ", "げーむ", "すこあ", "てんすう"] }
   ],
 
   commands: [],
