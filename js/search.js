@@ -43,7 +43,7 @@
         keys: ["れべる" + l.id, plain(l.title)].map(norm), body: norm(plain(l.goal)) });
     });
     (data.works || []).forEach(function (w) {
-      items.push({ title: plain(w.title), sub: "レベル" + w.level + " の さくひん", href: w.href, kind: "さくひん", icon: "star",
+      items.push({ title: plain(w.title), sub: (w.adv ? "おうよう" : "レベル" + w.level) + " の さくひん", href: w.href, kind: "さくひん", icon: "star",
         keys: [plain(w.title)].concat(w.yomi || []).map(norm), body: "" });
     });
     (data.pages || []).filter(function (p) { return p.ready; }).forEach(function (p) {

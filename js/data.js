@@ -86,7 +86,11 @@ window.SITE_DATA = {
     { id: "teleport", level: 4, title: "そらとび テレポート", href: "works/teleport.html", minutes: 20, stamp: true, yomi: ["てれぽーと", "そら", "ちぇーん"] },
     { id: "item-giver", level: 4, title: "アイテム くばり そうち", href: "works/item-giver.html", minutes: 20, stamp: false, yomi: ["あいてむ", "くばる", "どうぐ"] },
     { id: "auto-door", level: 5, title: "じどう ドア", href: "works/auto-door.html", minutes: 30, stamp: true, yomi: ["どあ", "じどう", "りぴーと", "じょうけん"] },
-    { id: "minigame", level: 6, title: "ボタン ラリー（ミニゲーム）", href: "works/minigame.html", minutes: 40, stamp: true, yomi: ["みにげーむ", "げーむ", "すこあ", "てんすう"] }
+    { id: "minigame", level: 6, title: "ボタン ラリー（ミニゲーム）", href: "works/minigame.html", minutes: 40, stamp: true, yomi: ["みにげーむ", "げーむ", "すこあ", "てんすう"] },
+    /* おうよう（レベル6の あと。スタンプなし。コマンド大ずかんから つながる） */
+    { id: "score-timer", level: 6, adv: true, title: "30びょう チャレンジ", href: "works/score-timer.html", minutes: 40, stamp: false, uses: ["scoreboard", "tag", "execute"], yomi: ["たいまー", "じかん", "すこあ", "ちゃれんじ"] },
+    { id: "power-floor", level: 6, adv: true, title: "パワーアップ ゆか", href: "works/power-floor.html", minutes: 20, stamp: false, uses: ["execute", "effect"], yomi: ["ゆか", "ぱわーあっぷ", "えくすきゅーと", "もし"] },
+    { id: "copy-machine", level: 6, adv: true, title: "いえ コピー マシン", href: "works/copy-machine.html", minutes: 30, stamp: false, uses: ["clone", "fill"], yomi: ["こぴー", "くろーん", "いえ", "けんちく"] }
   ],
 
   commands: [],

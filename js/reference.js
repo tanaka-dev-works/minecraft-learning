@@ -34,7 +34,7 @@
       var n = refs.filter(function (r) { return r.cat === c.id; }).length;
       if (n) html += '<a class="btn btn-small btn-diamond" href="#cat-' + c.id + '">' + c.title + "（" + n + "）</a>";
     });
-    html += "</nav>";
+    html += '<a class="btn btn-small btn-grass" href="#adv-works">おうようの さくひん</a></nav>';
     CATS.forEach(function (c) {
       var items = refs.filter(function (r) { return r.cat === c.id; });
       if (!items.length) return;
@@ -58,6 +58,12 @@
       }
       html += "</section>";
     });
+    var adv = (data.works || []).filter(function (w) { return w.adv; });
+    if (adv.length) {
+      html += '<section class="ref-cat" id="adv-works"><h2 class="section-title">' + icon("star") + "おうようの さくひん</h2><p>大ずかんの コマンドを つかって つくろう。</p><div class=\"next-links\">";
+      adv.forEach(function (w) { html += '<a class="btn btn-grass" href="../' + w.href + '">' + icon("star") + "<span>" + w.title + "</span></a>"; });
+      html += "</div></section>";
+    }
     list.innerHTML = html;
   }
 
@@ -103,6 +109,12 @@
         h += '<div class="example"><p class="example-no">れい ' + (i + 1) + '</p><div class="tiles" data-cmd="' + esc(ex.cmd) + '"></div>' +
           '<p class="example-result">' + icon("arrow-right") + "<span>" + ex.result + "</span></p></div>";
       });
+    }
+    var uses = (data.works || []).filter(function (w) { return (w.uses || []).indexOf(r.id) >= 0; });
+    if (uses.length) {
+      h += '<h2>この コマンドを つかう さくひん</h2><div class="next-links">';
+      uses.forEach(function (w) { h += '<a class="btn btn-grass" href="../' + w.href + '">' + icon("star") + "<span>" + w.title + "</span></a>"; });
+      h += "</div>";
     }
     if (r.careful) h += '<div class="box box-alert"><p class="box-title">きをつけること</p><p>' + r.careful + "</p></div>";
     var rel = (r.related || []).map(find).filter(Boolean);

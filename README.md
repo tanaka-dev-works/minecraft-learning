@@ -62,6 +62,7 @@ works/                  作品の作り方
 css/style.css           共通の見た目（:root に色・文字サイズ）／css/print.css 印刷用
 js/data.js              サイトのデータ（名前・キャラ・レベル・ページ・作品）
 js/data-commands.js     基本編のコマンド
+js/data-reference.js    応用編（コマンド大ずかん）のコマンド
 js/data-quiz.js         クイズ
 js/data-checklist.js    実機で確かめること
 js/main.js              ヘッダー・パンくず・フッター・ふりがな・よみあげ
