@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>レベル6｜マイクラ コマンド ぼうけん</title>
+  <link rel="icon" href="../images/guide.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-root=".." data-kids="true" data-crumbs='[["レベル6", ""]]'>
+  <main id="main" class="wrap" data-yomi>
+    <h1 class="work-title"><span class="lv-chip">レベル6</span>じぶんの ゲームを つくろう</h1>
+    <div class="stepper" data-key="pages/level6">
+<section class="step"><h2>きょうの もくひょう</h2>
+<div class="guide" data-mood="normal"><p><ruby>点<rt>てん</rt></ruby>すうを かぞえて、 じぶんの ゲームを つくろう！</p></div><div class="goal-card"><span class="js-icon" data-icon="goal"></span><p>できるように なること：<br><strong>スコアで <ruby>点<rt>てん</rt></ruby>すうを かぞえられる</strong></p></div>
+</section>
+<section class="step"><h2><ruby>点<rt>てん</rt></ruby>すうの はこを つくる</h2>
+<p>さいしょに 1かいだけ、 チャットで うつよ。</p><div class="tiles" data-cmd="/scoreboard objectives add point dummy" data-track></div>
+</section>
+<section class="step"><h2><ruby>画面<rt>がめん</rt></ruby>に <ruby>出<rt>だ</rt></ruby>す</h2>
+<div class="tiles" data-cmd="/scoreboard objectives setdisplay sidebar point" data-track></div><p><ruby>画面<rt>がめん</rt></ruby>の みぎに point が <ruby>出<rt>で</rt></ruby>たら OK。</p>
+</section>
+<section class="step"><h2><ruby>点<rt>てん</rt></ruby>を ふやす</h2>
+<div class="tiles" data-cmd="/scoreboard players add @s point 1" data-track></div><p>うつたびに 1 ふえるよ。</p>
+</section>
+<section class="step"><h2>なぜ そうなるの？</h2>
+<div class="box box-why"><p class="box-title">へんすう</p><p>point は かずを しまって おく 「はこ」。 なかみが かわる はこを <strong>へんすう</strong> と いうよ。</p><p>「もし 5<ruby>点<rt>てん</rt></ruby> いじょう なら かち」 と きめれば ゲームに なる。</p></div>
+</section>
+<section class="step"><h2>@p[scores=…] と /execute</h2>
+<p><code>@p[scores={point=5..}]</code> は 「point が 5 いじょうの <ruby>人<rt>ひと</rt></ruby>」。</p><div class="tiles" data-cmd="/testfor @p[scores={point=5..}]"></div><p>おなじ ことは <code>/execute</code> でも かけるよ。</p><div class="tiles" data-cmd="/execute if score @p point matches 5.. run say win"></div>
+</section>
+<section class="step"><h2>チャレンジ！</h2>
+<div class="guide" data-mood="normal"><p>ボタンを あつめる ミニゲームを つくろう。</p></div><div class="next-links"><a class="btn btn-grass" href="../works/minigame.html"><span class="js-icon" data-icon="star"></span><span>さくひん：ボタン ラリー</span></a><a class="btn btn-sky" href="quiz.html?level=6"><span class="js-icon" data-icon="circle-question"></span><span>たしかめ クイズ</span></a></div>
+</section>
+
+    </div>
+  </main>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/data-commands.js"></script>
+  <script src="../js/icons.js"></script>
+  <script src="../js/progress.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/parts.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>おうちの人へ｜マイクラ コマンド ぼうけん</title>
+  <link rel="icon" href="../images/guide.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-root=".." data-kids="false" data-crumbs='[["おうちの人へ", ""]]'>
+  <main id="main" class="wrap">
+    <h1>おうちの人へ</h1>
+    <p>このサイトは、小学2年生のお子さんが Nintendo Switch 版 Minecraft（統合版）で、コマンドとコマンドブロックの「プログラミング」を一人で学べるように作った非公式の資料です。Mojang・Microsoft とは関係ありません。</p>
+
+    <div class="menu-grid">
+      <a class="btn btn-grass" href="start.html"><span class="js-icon" data-icon="gamepad"></span><span>はじめに（ワールドの準備）</span></a>
+      <a class="btn btn-dirt" href="dont.html"><span class="js-icon" data-icon="warning-diamond"></span><span>やってはいけないコマンド</span></a>
+      <a class="btn btn-diamond" href="stamps.html"><span class="js-icon" data-icon="trophy"></span><span>お子さんのスタンプ</span></a>
+      <a class="btn btn-grass" href="checklist.html"><span class="js-icon" data-icon="check"></span><span>実機チェックリスト</span></a>
+    </div>
+
+    <h2>いまのレベルとスタンプ</h2>
+    <p id="parent-progress">読み込み中…</p>
+
+    <h2>安全の設定</h2>
+    <p>お子さんはオンラインで他の人とも遊んでいるとのことなので、次の3つをおすすめします。具体的な画面の名前は【要実機確認】です。</p>
+    <ol class="steps-list">
+      <li><strong>Switch の「みまもり設定」</strong>：スマートフォンの「Nintendo みまもり Switch」アプリで、遊ぶ時間や、他の人との通信（チャット・投稿）を制限できます。Nintendo のサポートページで「みまもり設定」を検索してください。</li>
+      <li><strong>Microsoft アカウントのプライバシー設定</strong>：Minecraft のマルチプレイやチャットは Microsoft アカウント（Xbox）の設定で制限できます。子どもアカウントの場合は、保護者の Microsoft Family Safety から「知らない人とのチャット」「マルチプレイ」を設定します。</li>
+      <li><strong>練習ワールドの公開設定</strong>：練習用ワールドはマルチプレイを OFF（オンラインに公開しない）にしておきます。</li>
+    </ol>
+
+    <h2>コマンド練習の安全ルール（お子さんと共有）</h2>
+    <ul>
+      <li>コマンドは練習用ワールドだけで打つ。友だちのワールドやサーバーでは打たない。</li>
+      <li>大事なワールドではチートを ON にしない（実績が解除されなくなり、元に戻せない）。</li>
+      <li>オンラインのワールドで / を付け忘れると、打った文字がチャットとして全員に送られる。</li>
+      <li>大きな範囲の /fill、/kill @e、リピートでの /summon はしない（<a href="dont.html">やってはいけないコマンド</a>）。</li>
+    </ul>
+
+    <h2>動かなくなったとき</h2>
+    <ol class="steps-list">
+      <li>リピート（紫色）のコマンドブロックを壊す。または、つながっているレッドストーン・レバーを外す。</li>
+      <li>モブが増えすぎた場合は、チャットで <code>/kill @e[type=pig]</code> のように種類を指定して消す。</li>
+      <li>操作できないほど重い場合は、ポーズメニューから「保存して終了」し、ワールドを開き直す。開いた瞬間に重くなる場合は、チャットで <code>/gamerule commandblocksenabled false</code> を打つとコマンドブロックがすべて止まります（ルール名は【要実機確認】）。</li>
+    </ol>
+
+    <h2>レベルごとのつまずき・声のかけ方・時間のめやす</h2>
+    <div class="table-scroll">
+    <table class="parents-table">
+      <thead><tr><th>レベル</th><th>つまずきやすい所</th><th>声のかけ方</th><th>時間</th></tr></thead>
+      <tbody><tr><th>レベル1<br>コマンドを打ってみよう</th><td>英数モードへの切り替え、記号（/）の場所。全角で打ってしまう。</td><td>「どのボタンで切り替えた？」と一緒に探す。1回成功したら大げさにほめる。</td><td>15〜20分</td></tr><tr><th>レベル2<br>場所と相手を決めよう</th><td>~ と数字の間のスペース、@ の出し方、座標の意味。</td><td>座標表示をONにして「Yはどう変わった？」と見比べる。</td><td>20〜30分</td></tr><tr><th>レベル3<br>コマンドブロックを動かそう</th><td>コマンドブロックの入手と設定画面の操作。ボタンをブロックに付ける。</td><td>設定画面の項目は大人が先に一度触っておくと説明しやすい。</td><td>20〜30分</td></tr><tr><th>レベル4<br>命令をつなげよう</th><td>チェーンの矢印の向き。先頭ブロックへの向きの合わせ方。</td><td>「矢印はどっちを向いてる？」と横と上から見る。</td><td>30分</td></tr><tr><th>レベル5<br>ずっと見張らせよう</th><td>リピート＋常にアクティブ、条件付きの意味。重くなる設定ミス。</td><td>止め方（ブロックを壊す）を先に練習しておく。</td><td>30〜40分</td></tr><tr><th>レベル6<br>自分のゲームを作ろう</th><td>/scoreboard の長いコマンド、objectives を先に作る順番。</td><td>1つずつ動作確認する「まちがいさがし（デバッグ）」を一緒に。</td><td>40分〜（2回に分けても可）</td></tr></tbody>
+    </table>
+    </div>
+
+    <h2>コマンド一覧表（基本編）</h2>
+    <div class="table-scroll">
+    <table class="parents-table" id="cmd-table">
+      <thead><tr><th>レベル</th><th>コマンド</th><th>何ができる？</th><th>いちばん短い例</th><th>どこで使う</th><th>確認状況</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    </div>
+
+    <h2>このサイトの作り方（読み方のルール）</h2>
+    <ul>
+      <li>子ども向けページは、1年生で習う漢字以外にふりがなを付けています。右上の「ふりがな」ボタンで消せます。</li>
+      <li>「よみあげ」ボタンで、ページの文章を日本語の音声で読みます（コマンドそのものは読みません）。</li>
+      <li>コマンドは1文字ずつのタイルで表示しています。Switch には貼り付けができないため、コピーボタンは保護者向け欄だけにあります。</li>
+      <li>各コマンドの「確認状況」は、公式ドキュメントで確認済／実機で確認済／未確認のどれかです。実機で確かめたら、実機チェックリストに記録してください。</li>
+    </ul>
+
+    <h2>公式の情報（外部リンク）</h2>
+    <ul class="link-list">
+      <li><a href="https://learn.microsoft.com/en-us/minecraft/creator/commands/commands/" rel="noopener" target="_blank">Microsoft Learn：Bedrock 版コマンド一覧（英語）</a></li>
+      <li><a href="https://learn.microsoft.com/en-us/minecraft/creator/commands/?view=minecraft-bedrock-stable" rel="noopener" target="_blank">Microsoft Learn：コマンドの入門（英語）</a></li>
+      <li><a href="https://family.microsoft.com/" rel="noopener" target="_blank">Microsoft Family Safety</a></li>
+      <li><a href="https://www.nintendo.com/jp/support/" rel="noopener" target="_blank">Nintendo サポート（「みまもり設定」で検索）</a></li>
+    </ul>
+    <p class="note">開発用：<a href="parts.html">部品の見本</a></p>
+  </main>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/data-commands.js"></script>
+  <script src="../js/icons.js"></script>
+  <script src="../js/progress.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/parts.js"></script>
+  <script>
+  (function () {
+    var levels = window.SITE_DATA.levels;
+    var d = window.Progress.get();
+    var got = levels.filter(function (l) { return d.stamps[String(l.id)]; });
+    var next = window.Progress.nextLevel(levels);
+    var learned = (d.learned || []).length;
+    document.getElementById("parent-progress").textContent =
+      "スタンプ " + got.length + " / " + levels.length + "。" +
+      (next === null ? "全レベルクリア済みです。" : "次はレベル" + next + "です。") +
+      "「おぼえた」を押したコマンド：" + learned + "個（この端末の記録です）。";
+    var W = { chat: "チャット", block: "コマンドブロック", both: "どちらでも" };
+    var S = { doc: "公式ドキュメントで確認済", device: "実機で確認済", unknown: "未確認" };
+    var plain = function (h) { return h.replace(/<rt>.*?<\/rt>/g, "").replace(/<[^>]+>/g, ""); };
+    document.querySelector("#cmd-table tbody").innerHTML = window.SITE_DATA.commands.slice().sort(function (a, b) {
+      var ex = function (c) { return c.examples.reduce(function (m, e) { return e.cmd.length < m.length ? e.cmd : m; }, c.examples[0].cmd); };
+      a._ex = ex(a); b._ex = ex(b); return a.level - b.level;
+    }).map(function (c) {
+      return "<tr><td>" + c.level + '</td><td><a href="command.html?id=' + c.id + '"><code>' + c.name + "</code></a></td><td>" + plain(c.what) +
+        "</td><td><code>" + c._ex + "</code></td><td>" + W[c.where] + "</td><td>" + S[c.status] + "</td></tr>";
+    }).join("");
+  })();
+  </script>
+</body>
+</html>

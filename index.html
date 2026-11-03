@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="小学生が Switch 版マインクラフトで コマンドブロックの プログラミングを おぼえる ための ひこうしきの サイト">
+  <title>マイクラ コマンド ぼうけん</title>
+  <link rel="icon" href="images/guide.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="fonts/fonts.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-root="." data-kids="true">
+  <main id="main" class="wrap" data-yomi>
+    <h1 class="visually-hidden">マイクラ コマンド ぼうけん</h1>
+
+    <div class="guide">
+      <p>やあ！ いっしょに マイクラの コマンドを おぼえよう。</p>
+      <p><ruby>光<rt>ひか</rt></ruby>って いる マスから はじめてね。</p>
+    </div>
+
+    <h2 class="section-title">レベルの すごろく</h2>
+    <p>スタンプ <span id="stamp-count">0 / 6</span></p>
+    <ol id="sugoroku" class="sugoroku" aria-label="レベル 1から 6"></ol>
+
+    <h2 class="section-title">しらべる</h2>
+    <div class="menu-grid" id="menu-lookup"></div>
+
+    <h2 class="section-title">おうちの <ruby>人<rt>ひと</rt></ruby>へ</h2>
+    <div class="menu-grid no-yomi" id="menu-parents"></div>
+  </main>
+
+  <script src="js/data.js"></script>
+  <script src="js/data-commands.js"></script>
+  <script src="js/icons.js"></script>
+  <script src="js/progress.js"></script>
+  <script src="js/main.js"></script>
+  <script src="js/parts.js"></script>
+  <script src="js/top.js"></script>
+</body>
+</html>

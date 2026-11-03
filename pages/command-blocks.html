@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>コマンドブロックずかん｜マイクラ コマンド ぼうけん</title>
+  <link rel="icon" href="../images/guide.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-root=".." data-kids="true" data-crumbs='[["しらべる", "pages/search.html"], ["コマンドブロックずかん", ""]]'>
+  <main id="main" class="wrap" data-yomi>
+    <h1>コマンドブロックずかん</h1>
+<div class="guide" data-mood="normal"><p>コマンドブロックの せっていを ぜんぶ まとめたよ。 こまったら ここを <ruby>見<rt>み</rt></ruby>てね。</p></div>
+    <h2>3つの しゅるい</h2>
+    <ul class="sel-cards cb-kinds">
+      <li class="sel-card"><span class="cb-cube" style="background:var(--cb-impulse)"></span><span class="cb-chip cb-chip-impulse">インパルス</span><span class="sel-name">オレンジ・1かいだけ</span><span class="sel-desc">しんごうが きた ときに 1かい うごく。 ボタンと くみあわせる。</span></li>
+      <li class="sel-card"><span class="cb-cube" style="background:var(--cb-chain)"></span><span class="cb-chip cb-chip-chain">チェーン</span><span class="sel-name">みどり・つながって</span><span class="sel-desc">まえの ブロックが うごいた あとに うごく。 「つねに オン」に する。</span></li>
+      <li class="sel-card"><span class="cb-cube" style="background:var(--cb-repeat)"></span><span class="cb-chip cb-chip-repeat">リピート</span><span class="sel-name">むらさき・ずっと</span><span class="sel-desc">1びょうに 20かい くりかえす。 /summon には つかわない。</span></li>
+    </ul>
+
+    <h2>じょうけん</h2>
+    <ul class="sel-cards">
+      <li class="sel-card"><span class="sel-name">じょうけん なし</span><span class="sel-desc">いつでも うごく。 ふつうは これ。</span></li>
+      <li class="sel-card"><span class="sel-name">じょうけんつき</span><span class="sel-desc">まえの ブロックが <strong>せいこう</strong> した ときだけ うごく。 「もし〜なら」を つくれる。 やじるしの もようが かわるよ。<span class="unverified">【じっきで たしかめる】</span></span></li>
+    </ul>
+
+    <h2>レッドストーン</h2>
+    <ul class="sel-cards">
+      <li class="sel-card"><span class="js-icon" data-icon="zap"></span><span class="sel-name">レッドストーンが ひつよう</span><span class="sel-desc">ボタン・レバー・かんあつばんで しんごうを いれた ときに うごく。 インパルスは ふつう これ。</span></li>
+      <li class="sel-card"><span class="js-icon" data-icon="repeat"></span><span class="sel-name">つねに オン（つねに アクティブ）</span><span class="sel-desc">しんごうが なくても うごく。 チェーンと、 ずっと <ruby>見<rt>み</rt></ruby>はる リピートで つかう。</span></li>
+    </ul>
+
+    <h2>おくらせる じかん（ティック）</h2>
+    <p>1ティックは 20ぶんの 1びょう。 20 に すると 1びょう まって から うごくよ。 ふつうは 0 の まま。<span class="unverified">【じっきで たしかめる】</span></p>
+
+    <h2>やじるしと つなぎかた</h2>
+    <p>やじるしの さきに ある ブロックへ つながる。 よこから <ruby>見<rt>み</rt></ruby>ても <ruby>上<rt>うえ</rt></ruby>から <ruby>見<rt>み</rt></ruby>ても、 やじるしが つぎを むいて いれば OK。</p>
+<figure class="diagram"><svg viewBox="-4 -4 328 136" role="img" aria-label="<ruby>上<rt>うえ</rt></ruby>から <ruby>見<rt>み</rt></ruby>た ず：まっすぐ"><rect x="0" y="0" width="320" height="128" fill="#f6f1e4"/><line x1="0" y1="0" x2="0" y2="128" stroke="#d8cfbd" stroke-width="2"/><line x1="64" y1="0" x2="64" y2="128" stroke="#d8cfbd" stroke-width="2"/><line x1="128" y1="0" x2="128" y2="128" stroke="#d8cfbd" stroke-width="2"/><line x1="192" y1="0" x2="192" y2="128" stroke="#d8cfbd" stroke-width="2"/><line x1="256" y1="0" x2="256" y2="128" stroke="#d8cfbd" stroke-width="2"/><line x1="320" y1="0" x2="320" y2="128" stroke="#d8cfbd" stroke-width="2"/><line x1="0" y1="0" x2="320" y2="0" stroke="#d8cfbd" stroke-width="2"/><line x1="0" y1="64" x2="320" y2="64" stroke="#d8cfbd" stroke-width="2"/><line x1="0" y1="128" x2="320" y2="128" stroke="#d8cfbd" stroke-width="2"/><rect x="16.0" y="16.0" width="32.0" height="32.0" fill="#8f9399" stroke="#3a3329" stroke-width="3"/><rect x="67" y="3" width="58" height="58" fill="#f28c28" stroke="#3a3329" stroke-width="3"/><line x1="75.52" y1="32.0" x2="116.48" y2="32.0" stroke="#fff" stroke-width="7"/><polygon points="122.48,32.0 116.48,42.0 116.48,22.0" fill="#fff"/><circle cx="78" cy="14" r="12" fill="#fff" stroke="#3a3329" stroke-width="2"/><text x="78" y="19" text-anchor="middle" font-size="15" font-weight="700" fill="#2b2620">1</text><rect x="131" y="3" width="58" height="58" fill="#2e9e5b" stroke="#3a3329" stroke-width="3"/><line x1="139.52" y1="32.0" x2="180.48" y2="32.0" stroke="#fff" stroke-width="7"/><polygon points="186.48,32.0 180.48,42.0 180.48,22.0" fill="#fff"/><circle cx="142" cy="14" r="12" fill="#fff" stroke="#3a3329" stroke-width="2"/><text x="142" y="19" text-anchor="middle" font-size="15" font-weight="700" fill="#2b2620">2</text><rect x="195" y="3" width="58" height="58" fill="#2e9e5b" stroke="#3a3329" stroke-width="3"/><line x1="203.52" y1="32.0" x2="244.48" y2="32.0" stroke="#fff" stroke-width="7"/><polygon points="250.48,32.0 244.48,42.0 244.48,22.0" fill="#fff"/><circle cx="206" cy="14" r="12" fill="#fff" stroke="#3a3329" stroke-width="2"/><text x="206" y="19" text-anchor="middle" font-size="15" font-weight="700" fill="#2b2620">3</text></svg><figcaption><strong><ruby>上<rt>うえ</rt></ruby>から <ruby>見<rt>み</rt></ruby>た ず：まっすぐ</strong><span class="legend"><span class="lg"><span class="lg-sw lg-button" style="background:#8f9399"></span>ボタン</span><span class="lg"><span class="lg-sw lg-impulse" style="background:#f28c28"></span>インパルス</span><span class="lg"><span class="lg-sw lg-chain" style="background:#2e9e5b"></span>チェーン</span><span class="lg">→ やじるしは ブロックの むき</span></span></figcaption></figure><figure class="diagram"><svg viewBox="-4 -4 264 200" role="img" aria-label="<ruby>上<rt>うえ</rt></ruby>から <ruby>見<rt>み</rt></ruby>た ず：まがる"><rect x="0" y="0" width="256" height="192" fill="#f6f1e4"/><line x1="0" y1="0" x2="0" y2="192" stroke="#d8cfbd" stroke-width="2"/><line x1="64" y1="0" x2="64" y2="192" stroke="#d8cfbd" stroke-width="2"/><line x1="128" y1="0" x2="128" y2="192" stroke="#d8cfbd" stroke-width="2"/><line x1="192" y1="0" x2="192" y2="192" stroke="#d8cfbd" stroke-width="2"/><line x1="256" y1="0" x2="256" y2="192" stroke="#d8cfbd" stroke-width="2"/><line x1="0" y1="0" x2="256" y2="0" stroke="#d8cfbd" stroke-width="2"/><line x1="0" y1="64" x2="256" y2="64" stroke="#d8cfbd" stroke-width="2"/><line x1="0" y1="128" x2="256" y2="128" stroke="#d8cfbd" stroke-width="2"/><line x1="0" y1="192" x2="256" y2="192" stroke="#d8cfbd" stroke-width="2"/><rect x="16.0" y="16.0" width="32.0" height="32.0" fill="#8f9399" stroke="#3a3329" stroke-width="3"/><rect x="67" y="3" width="58" height="58" fill="#f28c28" stroke="#3a3329" stroke-width="3"/><line x1="75.52" y1="32.0" x2="116.48" y2="32.0" stroke="#fff" stroke-width="7"/><polygon points="122.48,32.0 116.48,42.0 116.48,22.0" fill="#fff"/><circle cx="78" cy="14" r="12" fill="#fff" stroke="#3a3329" stroke-width="2"/><text x="78" y="19" text-anchor="middle" font-size="15" font-weight="700" fill="#2b2620">1</text><rect x="131" y="3" width="58" height="58" fill="#2e9e5b" stroke="#3a3329" stroke-width="3"/><line x1="160.0" y1="11.52" x2="160.0" y2="52.480000000000004" stroke="#fff" stroke-width="7"/><polygon points="160.0,58.480000000000004 150.0,52.480000000000004 170.0,52.480000000000004" fill="#fff"/><circle cx="142" cy="14" r="12" fill="#fff" stroke="#3a3329" stroke-width="2"/><text x="142" y="19" text-anchor="middle" font-size="15" font-weight="700" fill="#2b2620">2</text><rect x="131" y="67" width="58" height="58" fill="#2e9e5b" stroke="#3a3329" stroke-width="3"/><line x1="160.0" y1="75.52" x2="160.0" y2="116.48" stroke="#fff" stroke-width="7"/><polygon points="160.0,122.48 150.0,116.48 170.0,116.48" fill="#fff"/><circle cx="142" cy="78" r="12" fill="#fff" stroke="#3a3329" stroke-width="2"/><text x="142" y="83" text-anchor="middle" font-size="15" font-weight="700" fill="#2b2620">3</text><rect x="131" y="131" width="58" height="58" fill="#2e9e5b" stroke="#3a3329" stroke-width="3"/><circle cx="142" cy="142" r="12" fill="#fff" stroke="#3a3329" stroke-width="2"/><text x="142" y="147" text-anchor="middle" font-size="15" font-weight="700" fill="#2b2620">4</text></svg><figcaption><strong><ruby>上<rt>うえ</rt></ruby>から <ruby>見<rt>み</rt></ruby>た ず：まがる</strong><span class="legend"><span class="lg"><span class="lg-sw lg-button" style="background:#8f9399"></span>ボタン</span><span class="lg"><span class="lg-sw lg-impulse" style="background:#f28c28"></span>インパルス</span><span class="lg"><span class="lg-sw lg-chain" style="background:#2e9e5b"></span>チェーン</span><span class="lg">→ やじるしは ブロックの むき</span></span></figcaption></figure><figure class="diagram"><svg viewBox="-4 -4 200 264" role="img" aria-label="よこから <ruby>見<rt>み</rt></ruby>た ず：<ruby>上<rt>うえ</rt></ruby>へ のびる"><rect x="0" y="0" width="192" height="256" fill="#f6f1e4"/><line x1="0" y1="0" x2="0" y2="256" stroke="#d8cfbd" stroke-width="2"/><line x1="64" y1="0" x2="64" y2="256" stroke="#d8cfbd" stroke-width="2"/><line x1="128" y1="0" x2="128" y2="256" stroke="#d8cfbd" stroke-width="2"/><line x1="192" y1="0" x2="192" y2="256" stroke="#d8cfbd" stroke-width="2"/><line x1="0" y1="0" x2="192" y2="0" stroke="#d8cfbd" stroke-width="2"/><line x1="0" y1="64" x2="192" y2="64" stroke="#d8cfbd" stroke-width="2"/><line x1="0" y1="128" x2="192" y2="128" stroke="#d8cfbd" stroke-width="2"/><line x1="0" y1="192" x2="192" y2="192" stroke="#d8cfbd" stroke-width="2"/><line x1="0" y1="256" x2="192" y2="256" stroke="#d8cfbd" stroke-width="2"/><rect x="16.0" y="208.0" width="32.0" height="32.0" fill="#8f9399" stroke="#3a3329" stroke-width="3"/><rect x="67" y="195" width="58" height="58" fill="#f28c28" stroke="#3a3329" stroke-width="3"/><line x1="96.0" y1="244.48" x2="96.0" y2="203.52" stroke="#fff" stroke-width="7"/><polygon points="96.0,197.52 106.0,203.52 86.0,203.52" fill="#fff"/><circle cx="78" cy="206" r="12" fill="#fff" stroke="#3a3329" stroke-width="2"/><text x="78" y="211" text-anchor="middle" font-size="15" font-weight="700" fill="#2b2620">1</text><rect x="67" y="131" width="58" height="58" fill="#2e9e5b" stroke="#3a3329" stroke-width="3"/><line x1="96.0" y1="180.48" x2="96.0" y2="139.52" stroke="#fff" stroke-width="7"/><polygon points="96.0,133.52 106.0,139.52 86.0,139.52" fill="#fff"/><circle cx="78" cy="142" r="12" fill="#fff" stroke="#3a3329" stroke-width="2"/><text x="78" y="147" text-anchor="middle" font-size="15" font-weight="700" fill="#2b2620">2</text><rect x="67" y="67" width="58" height="58" fill="#2e9e5b" stroke="#3a3329" stroke-width="3"/><line x1="96.0" y1="116.48" x2="96.0" y2="75.52" stroke="#fff" stroke-width="7"/><polygon points="96.0,69.52 106.0,75.52 86.0,75.52" fill="#fff"/><circle cx="78" cy="78" r="12" fill="#fff" stroke="#3a3329" stroke-width="2"/><text x="78" y="83" text-anchor="middle" font-size="15" font-weight="700" fill="#2b2620">3</text><rect x="67" y="3" width="58" height="58" fill="#2e9e5b" stroke="#3a3329" stroke-width="3"/><circle cx="78" cy="14" r="12" fill="#fff" stroke="#3a3329" stroke-width="2"/><text x="78" y="19" text-anchor="middle" font-size="15" font-weight="700" fill="#2b2620">4</text></svg><figcaption><strong>よこから <ruby>見<rt>み</rt></ruby>た ず：<ruby>上<rt>うえ</rt></ruby>へ のびる</strong><span class="legend"><span class="lg"><span class="lg-sw lg-button" style="background:#8f9399"></span>ボタン</span><span class="lg"><span class="lg-sw lg-impulse" style="background:#f28c28"></span>インパルス</span><span class="lg"><span class="lg-sw lg-chain" style="background:#2e9e5b"></span>チェーン</span><span class="lg">→ やじるしは ブロックの むき</span></span></figcaption></figure>
+    <div class="box box-why"><p class="box-title">じゅんばん</p><p>1 → 2 → 3 の じゅんに うごく。 とちゅうの やじるしが ちがう むきだと、 そこで とまるよ。</p></div>
+
+    <h2>コマンドブロックの <ruby>画面<rt>がめん</rt></ruby></h2>
+    <ul class="rule-list">
+      <li>コマンドを にゅうりょく：コマンドを うつ ところ。</li>
+      <li>ブロックの しゅるい：インパルス／チェーン／リピート。</li>
+      <li>じょうけん：じょうけん なし／じょうけんつき。</li>
+      <li>レッドストーン：ひつよう／つねに オン。</li>
+      <li>おくらせる じかん：ティックの かず。</li>
+      <li>さいごの けっか：うごいた けっかが <ruby>出<rt>で</rt></ruby>る。 うまく いかない ときに <ruby>見<rt>み</rt></ruby>よう。</li>
+    </ul>
+    <p class="note"><ruby>画面<rt>がめん</rt></ruby>の ことばは、 ほんものと すこし ちがう かも しれないよ。<span class="unverified">【じっきで たしかめる】</span></p>
+
+    <h2>コマンドブロックで つかう ときの きまり</h2>
+    <ul class="rule-list">
+      <li>コマンドの さいしょの / は あっても なくても いい。<span class="unverified">【じっきで たしかめる】</span></li>
+      <li>じぶんを えらぶ ときは @s では なく <strong>@p</strong>。</li>
+      <li>~ は コマンドブロックの ばしょが きじゅん。</li>
+    </ul>
+  </main>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/data-commands.js"></script>
+  <script src="../js/icons.js"></script>
+  <script src="../js/progress.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/parts.js"></script>
+</body>
+</html>
