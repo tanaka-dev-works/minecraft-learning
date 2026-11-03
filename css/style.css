@@ -1,0 +1,268 @@
+/* マイクラ コマンド ぼうけん — 共通スタイル
+   色・余白・文字サイズは :root の変数にまとめる（docs/DESIGN.md 6章） */
+
+:root {
+  /* 色：草・土・石・空・ダイヤ（文字色との組み合わせはコントラスト 4.5:1 以上） */
+  --c-bg: #fbf7ee;          /* うすいベージュ */
+  --c-surface: #ffffff;
+  --c-text: #2b2620;
+  --c-text-sub: #5a5146;
+  --c-line: #3a3329;
+
+  --c-grass: #3f7d2c;       /* 白文字 5.3:1 */
+  --c-grass-dark: #2a5a1c;
+  --c-grass-light: #e3f1d8;
+  --c-dirt: #7a4f2a;        /* 白文字 6.9:1 */
+  --c-dirt-dark: #553518;
+  --c-dirt-light: #f1e4d3;
+  --c-stone: #5f646b;       /* 白文字 5.9:1 */
+  --c-stone-dark: #3f4348;
+  --c-stone-light: #e7e8ea;
+  --c-sky: #1f6fa8;         /* 白文字 5.4:1 */
+  --c-sky-dark: #154f7a;
+  --c-sky-light: #dcecf8;
+  --c-diamond: #0c7c86;     /* 白文字 5.0:1 */
+  --c-diamond-dark: #075960;
+  --c-diamond-light: #d6f3f4;
+  --c-gold: #f2c230;
+  --c-alert: #b3261e;       /* 白文字 6.5:1 */
+  --c-alert-light: #fbe3e1;
+
+  /* 文字 */
+  --font-body: "BIZ UDGothic", "BIZ UDPGothic", "Noto Sans JP", "Noto Sans CJK JP",
+    "Hiragino Sans", "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  --font-head: "DotGothic16", var(--font-body);
+  --font-code: "BIZ UDGothic", "Noto Sans Mono CJK JP", "Consolas", "Menlo", monospace;
+  --fs-body: 20px;
+  --fs-small: 17px;   /* 保護者向けの補足だけ */
+  --fs-lead: 24px;
+  --fs-h1: 32px;
+  --fs-h2: 26px;
+  --fs-code: 28px;
+  --lh-body: 1.9;     /* ふりがなが重ならない高さ */
+
+  /* 形・余白 */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --tap: 60px;        /* ボタンの最小サイズ */
+  --gap-tap: 16px;    /* ボタンどうしのすきま */
+  --bevel: 6px;       /* 立体ボタンの下のふち */
+  --page-max: 960px;
+  --gutter: 16px;
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--c-bg);
+  color: var(--c-text);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  /* 分かち書きの すきまで 改行し、ことばの とちゅうで 切らない */
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+  line-break: strict;
+}
+
+img, svg { max-width: 100%; height: auto; }
+
+a { color: var(--c-sky-dark); text-underline-offset: 3px; }
+
+:focus-visible { outline: 4px solid var(--c-gold); outline-offset: 2px; }
+
+rt { font-size: 0.55em; }
+body.no-furigana rt { display: none; }
+
+h1, h2, h3 { font-family: var(--font-head); line-height: 1.5; margin: 0 0 var(--sp-4); }
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-lead); }
+p { margin: 0 0 var(--sp-4); }
+
+.wrap { max-width: var(--page-max); margin: 0 auto; padding: 0 var(--gutter); }
+
+.visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* ===== ヘッダー ===== */
+.site-header {
+  background: var(--c-grass);
+  color: #fff;
+  border-bottom: var(--bevel) solid var(--c-dirt);
+}
+.site-header .wrap {
+  display: flex; align-items: center; gap: var(--sp-3);
+  min-height: 72px; flex-wrap: wrap; padding-top: var(--sp-2); padding-bottom: var(--sp-2);
+}
+.site-title {
+  font-family: var(--font-head);
+  font-size: 22px;
+  color: #fff;
+  text-decoration: none;
+  display: inline-flex; align-items: center; gap: var(--sp-2);
+  min-height: var(--tap);
+  margin-right: auto;
+}
+.site-title .logo { width: 36px; height: 36px; image-rendering: pixelated; }
+.header-tools { display: flex; gap: var(--sp-3); }
+
+/* ===== パンくず ===== */
+.breadcrumb { font-size: var(--fs-small); padding: var(--sp-3) 0 0; }
+.breadcrumb ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--sp-2); }
+.breadcrumb li + li::before { content: "›"; margin-right: var(--sp-2); color: var(--c-text-sub); }
+
+main { padding: var(--sp-5) 0 var(--sp-7); }
+
+/* ===== ボタン（立体・押すと沈む） ===== */
+.btn {
+  --btn-bg: var(--c-stone);
+  --btn-edge: var(--c-stone-dark);
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--sp-2);
+  min-width: var(--tap); min-height: var(--tap);
+  padding: var(--sp-2) var(--sp-5);
+  background: var(--btn-bg);
+  color: #fff;
+  font: inherit; font-family: var(--font-head);
+  font-size: var(--fs-body);
+  line-height: 1.4;
+  text-decoration: none;
+  border: 3px solid var(--c-line);
+  border-bottom-width: calc(3px + var(--bevel));
+  border-radius: 0;
+  box-shadow: inset 3px 3px 0 rgba(255, 255, 255, .25), inset -3px -3px 0 rgba(0, 0, 0, .15);
+  cursor: pointer;
+  touch-action: manipulation;
+  user-select: none;
+}
+.btn:active { transform: translateY(4px); border-bottom-width: 7px; margin-bottom: 4px; }
+.btn[disabled], .btn[aria-disabled="true"] { opacity: .55; cursor: not-allowed; }
+.btn-grass { --btn-bg: var(--c-grass); }
+.btn-sky { --btn-bg: var(--c-sky); }
+.btn-dirt { --btn-bg: var(--c-dirt); }
+.btn-diamond { --btn-bg: var(--c-diamond); }
+.btn-small { font-size: var(--fs-small); padding: var(--sp-1) var(--sp-3); }
+.btn .icon { width: 28px; height: 28px; flex: none; }
+
+.site-header .btn { border-color: var(--c-grass-dark); }
+
+/* ===== カード ===== */
+.card {
+  background: var(--c-surface);
+  border: 3px solid var(--c-line);
+  box-shadow: 6px 6px 0 rgba(58, 51, 41, .25);
+  padding: var(--sp-5);
+}
+
+/* ===== トップ：あいさつ ===== */
+.hello {
+  display: flex; gap: var(--sp-4); align-items: flex-start;
+  margin-bottom: var(--sp-6);
+}
+.hello .bubble { flex: 1; position: relative; }
+.hello .bubble p:last-child { margin-bottom: 0; }
+.guide-face { width: 72px; height: 72px; flex: none; image-rendering: pixelated; }
+
+/* ===== トップ：レベルのすごろく ===== */
+.sugoroku { list-style: none; margin: 0 0 var(--sp-7); padding: 0; display: grid; gap: var(--sp-5); }
+.sugoroku li { position: relative; }
+.sugoroku li + li::before {
+  /* マスとマスをつなぐ道 */
+  content: ""; position: absolute; left: 50px; top: calc(-1 * var(--sp-5)); width: 16px; height: var(--sp-5);
+  background: repeating-linear-gradient(var(--c-dirt) 0 6px, transparent 6px 10px);
+}
+.square {
+  display: grid; grid-template-columns: 84px 1fr auto; align-items: center; gap: var(--sp-4);
+  min-height: 112px; padding: var(--sp-3) var(--sp-4);
+  background: var(--c-surface); color: var(--c-text); text-decoration: none;
+  border: 3px solid var(--c-line); border-bottom-width: calc(3px + var(--bevel));
+}
+a.square:active { transform: translateY(4px); }
+.square .num {
+  width: 84px; height: 84px; display: grid; place-items: center;
+  font-family: var(--font-head); font-size: 34px; line-height: 1; color: #fff;
+  background: var(--c-stone); border: 3px solid var(--c-line);
+  box-shadow: inset 4px 4px 0 rgba(255, 255, 255, .25), inset -4px -4px 0 rgba(0, 0, 0, .2);
+}
+.square .num small { display: block; font-size: 14px; margin-bottom: 2px; }
+.square .name { font-family: var(--font-head); font-size: var(--fs-lead); line-height: 1.5; }
+.square .goal { display: block; font-family: var(--font-body); font-size: var(--fs-small); color: var(--c-text-sub); }
+.square .state { font-size: var(--fs-small); text-align: center; min-width: 72px; }
+.square .state svg { width: 44px; height: 44px; display: block; margin: 0 auto; }
+
+.square[data-state="clear"] .num { background: var(--c-grass); }
+.square[data-state="next"] { border-color: var(--c-dirt-dark); background: #fff8dc; outline: 5px solid var(--c-gold); outline-offset: 0; }
+.square[data-state="next"] .num { background: var(--c-dirt); }
+.square[data-state="soon"] { background: var(--c-stone-light); color: var(--c-text-sub); }
+
+.sugoroku li.is-next { padding-top: 22px; }
+.next-flag {
+  position: absolute; top: 0; right: 12px; z-index: 1;
+  background: var(--c-alert); color: #fff; font-family: var(--font-head); font-size: var(--fs-small);
+  padding: 2px var(--sp-3); border: 3px solid var(--c-line);
+}
+@media (prefers-reduced-motion: no-preference) {
+  .next-flag { animation: bob 1.2s steps(2, end) infinite; }
+  @keyframes bob { 50% { transform: translateY(-4px); } }
+}
+
+/* ===== トップ：しらべる・おうちの人へ ===== */
+.menu-grid { display: grid; gap: var(--gap-tap); grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); margin-bottom: var(--sp-6); }
+.menu-grid .btn { width: 100%; min-height: 76px; flex-direction: column; align-items: flex-start; justify-content: center; gap: 0; text-align: left; }
+.soon-note { font-family: var(--font-body); font-size: 15px; display: block; }
+
+.section-title { display: flex; align-items: center; gap: var(--sp-2); }
+.section-title svg { width: 32px; height: 32px; }
+
+/* ===== よみあげ ===== */
+.btn[aria-pressed="true"] { --btn-bg: var(--c-alert); }
+
+/* ===== フッター ===== */
+.site-footer {
+  border-top: var(--bevel) solid var(--c-stone);
+  background: var(--c-stone-light);
+  font-size: var(--fs-small);
+  color: var(--c-text);
+  padding: var(--sp-5) 0;
+}
+.site-footer p { margin: 0 0 var(--sp-2); }
+
+/* ===== 保護者向けの表（子ども向けページでは使わない） ===== */
+.parents-table { border-collapse: collapse; width: 100%; font-size: var(--fs-small); }
+.parents-table th, .parents-table td { border: 2px solid var(--c-line); padding: var(--sp-2); text-align: left; vertical-align: top; }
+
+/* ===== 画面のはば ===== */
+@media (min-width: 768px) {
+  :root { --gutter: 24px; }
+}
+@media (min-width: 1000px) {
+  .sugoroku { grid-template-columns: 1fr 1fr; column-gap: var(--sp-6); }
+  /* 2列のときは「上から下、左から右」の順が分かるようにマスに番号を大きく出す */
+  .sugoroku li + li::before { display: none; }
+}
+@media (max-width: 480px) {
+  .square { grid-template-columns: 64px 1fr; min-height: 96px; }
+  .square .num { width: 64px; height: 64px; font-size: 28px; }
+  .square .state { grid-column: 1 / -1; display: flex; align-items: center; gap: var(--sp-2); text-align: left; }
+  .square .state svg { margin: 0; width: 32px; height: 32px; }
+  .sugoroku li + li::before { left: 40px; }
+  .guide-face { width: 56px; height: 56px; }
+  .site-title { font-size: 19px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .btn:active, a.square:active { transform: none; }
+}
