@@ -2,7 +2,14 @@
    形は docs/DESIGN.md 5章。コマンド・作品・クイズはフェーズ3以降で足す。
    title / goal は子ども向けの文で、<ruby> をふくむ HTML。 */
 window.SITE_DATA = {
-  siteName: "マイクラ コマンド ぼうけん",
+  siteName: "マイクラ コマンド ぼうけん", // 仮の名前（ここを かえると 全ページの ヘッダーが かわる）
+
+  /* あんないキャラ（仮）。見た目は images/guide.svg、名前は name を かえれば 全ページで かわる */
+  guide: {
+    name: "ブロボ",
+    image: "images/guide.svg",
+    images: { happy: "images/guide-happy.svg" }
+  },
 
   levels: [
     {

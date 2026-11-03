@@ -6,7 +6,7 @@
 
   var KEY = "mcl-progress-v1";
   var EMPTY = function () {
-    return { stamps: {}, learned: [], favorites: [], steps: {} };
+    return { stamps: {}, learned: [], favorites: [], steps: {}, prefs: {} };
   };
   var memory = null; // 保存できないときの控え
 
@@ -65,6 +65,32 @@
       var d = load();
       d.steps[pageKey] = n;
       return save(d);
+    },
+    getPref: function (name, fallback) {
+      var v = load().prefs[name];
+      return v === undefined ? fallback : v;
+    },
+    setPref: function (name, value) {
+      var d = load();
+      d.prefs[name] = value;
+      return save(d);
+    },
+    clearStamps: function () {
+      var d = load();
+      d.stamps = {};
+      return save(d);
+    },
+    toggleList: function (listName, id) {
+      var d = load();
+      var list = d[listName] || [];
+      var i = list.indexOf(id);
+      if (i >= 0) list.splice(i, 1); else list.push(id);
+      d[listName] = list;
+      save(d);
+      return i < 0;
+    },
+    inList: function (listName, id) {
+      return (load()[listName] || []).indexOf(id) >= 0;
     },
     /* つぎに やるレベル（スタンプがない いちばん小さいレベル） */
     nextLevel: function (levels) {

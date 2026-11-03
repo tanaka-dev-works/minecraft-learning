@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>部品の見本｜マイクラ コマンド ぼうけん</title>
+  <meta name="robots" content="noindex">
+  <link rel="icon" href="../images/guide.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-root=".." data-kids="true" data-crumbs='[["部品の見本（おうちの人・開発用）",""]]'>
+  <main id="main" class="wrap">
+    <h1>部品の見本</h1>
+    <p class="no-yomi">子ども向けページで使う部品の一覧です（開発・確認用）。子どもの道すじからはリンクしていません。</p>
+
+    <h2>あんないキャラ</h2>
+    <div class="guide"><p>ぼくが あんないするよ。 わからなく なったら、 下の ボタンを おしてね。</p></div>
+    <div class="guide" data-mood="happy"><p>できたね！ すごい！</p></div>
+
+    <h2>もじタイル</h2>
+    <p>タイルを おすと、 そこまで うった しるしが つくよ。</p>
+    <div class="tiles" data-cmd="/time set day" data-track></div>
+    <div class="tiles" data-cmd="/tp @s ~ ~5 ~"></div>
+    <div class="tiles" data-cmd="/give @p diamond 3"></div>
+    <div class="tiles" data-cmd="/execute as @a[tag=oni] run say ^_^"></div>
+
+    <h2>キーボードの ず</h2>
+    <div class="kbd" data-cmd="/time set day"></div>
+
+    <h2>はこ</h2>
+    <div class="with-adult"><p>おうちの <ruby>人<rt>ひと</rt></ruby>と いっしょに やろう。</p></div>
+    <div class="box box-alert"><p class="box-title">ちゅうい</p><p>ともだちの ワールドでは うたないでね。</p></div>
+    <div class="box box-hint"><p class="box-title">ヒント</p><p>まちがえても だいじょうぶ。</p></div>
+    <div class="box box-why"><p class="box-title">なぜ そうなるの？</p><p>コマンドは マイクラへの めいれいだよ。</p></div>
+
+    <h2>1ステップ 1がめん</h2>
+    <div class="stepper" data-key="pages/parts">
+      <section class="step"><h3>1. チャットを ひらく</h3><p>Xボタンを おす。</p></section>
+      <section class="step"><h3>2. もじを うつ</h3><div class="tiles" data-cmd="/time set day"></div></section>
+      <section class="step"><h3>3. おくる</h3><p>＋ボタンを おす。</p></section>
+      <section class="step"><h3>4. できた？</h3><p>あさに なったら せいこう！</p>
+        <p><button type="button" class="btn btn-grass" data-stamp="1">できた！</button></p>
+        <p><button type="button" class="btn btn-small" data-step-restart>さいしょから</button></p>
+      </section>
+    </div>
+  </main>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/icons.js"></script>
+  <script src="../js/progress.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/parts.js"></script>
+</body>
+</html>

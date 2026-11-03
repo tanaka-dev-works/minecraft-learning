@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>スタンプちょう｜マイクラ コマンド ぼうけん</title>
+  <link rel="icon" href="../images/guide.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-root=".." data-kids="true" data-crumbs='[["スタンプちょう",""]]'>
+  <main id="main" class="wrap" data-yomi>
+    <h1>スタンプちょう</h1>
+    <div class="guide" id="stamp-guide" data-mood="normal"><p>レベルを クリアすると スタンプが もらえるよ。</p></div>
+    <ul class="stamp-book" id="stamp-book" aria-label="スタンプ"></ul>
+    <p id="stamp-next-wrap"></p>
+
+    <details class="box no-yomi" id="stamp-reset">
+      <summary>おうちの人へ：スタンプを消す</summary>
+      <p>この端末に保存したスタンプを、すべて消します。元に戻せません。</p>
+      <button type="button" class="btn btn-dirt" id="stamp-clear">スタンプをすべて消す</button>
+    </details>
+  </main>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/icons.js"></script>
+  <script src="../js/progress.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/parts.js"></script>
+  <script>
+  (function () {
+    "use strict";
+    var levels = (window.SITE_DATA || {}).levels || [];
+    var P = window.Progress;
+    var book = document.getElementById("stamp-book");
+    function draw() {
+      var data = P.get();
+      var got = 0;
+      book.innerHTML = "";
+      levels.forEach(function (lv) {
+        var date = data.stamps[String(lv.id)];
+        if (date) got++;
+        var li = document.createElement("li");
+        li.className = "stamp-slot" + (date ? " is-got" : "");
+        li.innerHTML = window.PixelIcon("star") +
+          '<span class="lv">レベル' + lv.id + "</span>" +
+          "<span>" + lv.title + "</span>" +
+          '<span class="date">' + (date ? date.replace(/-/g, "/") : "まだ") + "</span>";
+        book.appendChild(li);
+      });
+      var next = P.nextLevel(levels);
+      var wrap = document.getElementById("stamp-next-wrap");
+      var guide = document.querySelector("#stamp-guide .bubble");
+      if (next === null) {
+        wrap.innerHTML = "";
+        if (guide) guide.lastElementChild.innerHTML = "ぜんぶ あつめたね！ すごい！";
+      } else {
+        var lv = levels.filter(function (l) { return l.id === next; })[0];
+        wrap.innerHTML = lv.ready
+          ? '<a class="btn btn-grass" href="../' + lv.page + '">' + window.PixelIcon("arrow-right") + "<span>つぎは レベル" + next + "</span></a>"
+          : '<a class="btn btn-grass" href="../index.html">' + window.PixelIcon("home") + "<span>すごろくへ もどる</span></a>";
+        if (guide) guide.lastElementChild.innerHTML = "いま " + got + "こ。 つぎは レベル" + next + " だよ。";
+      }
+    }
+    document.getElementById("stamp-clear").addEventListener("click", function () {
+      if (window.confirm("スタンプをすべて消します。よろしいですか？")) { P.clearStamps(); draw(); }
+    });
+    draw();
+  })();
+  </script>
+</body>
+</html>

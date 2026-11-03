@@ -266,3 +266,158 @@ a.square:active { transform: translateY(4px); }
   *, *::before, *::after { animation: none !important; transition: none !important; }
   .btn:active, a.square:active { transform: none; }
 }
+
+/* =====================================================================
+   フェーズ2：子ども向けの部品
+   ===================================================================== */
+:root {
+  /* 文字タイルの色（記号は色と名前の両方で見分ける） */
+  --t-letter-bg: #ffffff;
+  --t-letter-fg: var(--c-text);
+  --t-digit-bg: #fff3c4;
+  --t-slash: var(--c-sky);
+  --t-at: var(--c-diamond);
+  --t-tilde: var(--c-dirt);
+  --t-caret: #7b3fa0;      /* 白文字 7.0:1 */
+  --t-bracket: #8a5a00;    /* 白文字 5.4:1 */
+  --t-other: var(--c-stone);
+  --tile-w: 52px;
+}
+
+/* ---- 文字タイル ---- */
+.tiles { margin: 0 0 var(--sp-5); overflow-x: auto; padding-bottom: var(--sp-2); }
+.tile-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.tile {
+  display: inline-flex; flex-direction: column; align-items: center; justify-content: flex-start;
+  min-width: var(--tile-w); min-height: 76px; padding: 4px 2px 2px;
+  background: var(--t-letter-bg); color: var(--t-letter-fg);
+  border: 3px solid var(--c-line); border-bottom-width: 6px;
+  font-family: var(--font-code); line-height: 1;
+  cursor: default; user-select: none;
+}
+.tile .tile-face { font-size: var(--fs-code); font-weight: 700; line-height: 1.2; min-height: 34px; }
+.tile .tile-name { font-family: var(--font-body); font-size: 11px; line-height: 1.2; margin-top: 4px; white-space: nowrap; letter-spacing: -0.02em; }
+.tile-digit { background: var(--t-digit-bg); }
+.tile-upper { background: var(--c-alert-light); }
+.tile-symbol { color: #fff; }
+.sym-slash { background: var(--t-slash); }
+.sym-at { background: var(--t-at); }
+.sym-tilde { background: var(--t-tilde); }
+.sym-caret { background: var(--t-caret); }
+.sym-bracket { background: var(--t-bracket); }
+.sym-other { background: var(--t-other); }
+.tile.sym-space {
+  background: repeating-linear-gradient(45deg, #fff 0 6px, var(--c-stone-light) 6px 12px);
+  color: var(--c-text); min-width: 64px; border-style: dashed; border-bottom-style: solid;
+}
+.tiles[data-track] .tile { cursor: pointer; }
+.tile.is-done { opacity: .35; }
+.tile.is-now { outline: 5px solid var(--c-gold); outline-offset: 1px; transform: translateY(-3px); }
+.tile-tools { display: flex; flex-wrap: wrap; align-items: center; gap: var(--gap-tap); margin-top: var(--sp-4); }
+.tile-count { font-family: var(--font-head); }
+
+/* ---- キーボード配列図 ---- */
+.kbd { margin: 0 0 var(--sp-5); }
+.kbd-board {
+  display: grid; gap: 6px; padding: var(--sp-3);
+  background: var(--c-stone-dark); border: 3px solid var(--c-line); max-width: 640px;
+}
+.kbd-row { display: flex; justify-content: center; gap: 4px; }
+.kbd-row-2 { padding: 0 3%; }
+.kbd-row-3 { padding: 0 9%; }
+.kbd-key {
+  flex: 1 1 0; min-width: 0; max-width: 56px; aspect-ratio: 1 / 1.05;
+  display: grid; place-items: center;
+  background: #4a4f55; color: #c9ccd0;
+  font-family: var(--font-code); font-size: clamp(14px, 3.6vw, 22px);
+  border-bottom: 3px solid #2c2f33;
+}
+.kbd-key.is-used { background: #fff; color: var(--c-text); outline: 3px solid var(--c-gold); font-weight: 700; }
+.kbd-key.is-used.tile-digit { background: var(--t-digit-bg); }
+.kbd-key.kbd-wide { flex: 0 1 60%; max-width: none; aspect-ratio: auto; height: 40px; font-family: var(--font-body); font-size: 15px; }
+.kbd-key.kbd-wide.is-used { background: repeating-linear-gradient(45deg, #fff 0 6px, var(--c-stone-light) 6px 12px); }
+.kbd-note { font-size: var(--fs-body); margin: var(--sp-3) 0 var(--sp-2); }
+.kbd-syms { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* ---- あんないキャラ ---- */
+.guide { display: flex; gap: var(--sp-4); align-items: flex-start; margin: 0 0 var(--sp-5); }
+.guide .bubble { flex: 1; }
+.guide .bubble p:last-child { margin-bottom: 0; }
+.guide-name { display: block; font-family: var(--font-head); font-size: var(--fs-small); color: var(--c-diamond-dark); }
+
+/* ---- 1ステップ1画面 ---- */
+.stepper { position: relative; }
+.step-progress { display: flex; align-items: center; gap: var(--sp-3); margin-bottom: var(--sp-4); font-family: var(--font-head); }
+.step-bar { flex: 1; height: 16px; background: var(--c-stone-light); border: 3px solid var(--c-line); }
+.step-fill { display: block; height: 100%; background: var(--c-grass); width: 0; }
+.step { min-height: 40vh; }
+.step-nav {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 10;
+  display: flex; justify-content: space-between; gap: var(--gap-tap);
+  padding: var(--sp-3) var(--gutter) calc(var(--sp-3) + env(safe-area-inset-bottom));
+  background: rgba(251, 247, 238, .96); border-top: 4px solid var(--c-line);
+}
+.step-nav .btn { min-height: 72px; min-width: 132px; font-size: var(--fs-lead); }
+.step-nav .step-next { margin-left: auto; min-width: 45%; }
+.step-nav .btn[hidden] { display: none; }
+body.has-step-nav .site-footer { padding-bottom: 120px; }
+
+/* ---- スタンプ ---- */
+.btn.is-stamped::after { content: "✓"; margin-left: var(--sp-2); }
+.celebrate {
+  position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: var(--gutter);
+  background: rgba(43, 38, 32, .6);
+}
+.celebrate-box { max-width: 520px; width: 100%; text-align: center; max-height: 90vh; overflow-y: auto; }
+.celebrate-title { font-family: var(--font-head); font-size: var(--fs-h1); margin-bottom: var(--sp-2); }
+.celebrate-stamp { color: var(--c-gold); }
+.stamp-icon { width: 120px; height: 120px; filter: drop-shadow(4px 4px 0 var(--c-dirt-dark)); }
+.celebrate-guide { display: flex; gap: var(--sp-3); align-items: center; justify-content: center; text-align: left; margin-bottom: var(--sp-4); }
+.celebrate-guide p { margin: 0; }
+.celebrate-actions { display: flex; flex-wrap: wrap; gap: var(--gap-tap); justify-content: center; }
+@media (prefers-reduced-motion: no-preference) {
+  .celebrate-stamp { animation: stamp-in .5s steps(4, end) both; }
+  @keyframes stamp-in { from { transform: scale(2.2) rotate(-20deg); opacity: 0; } to { transform: none; opacity: 1; } }
+}
+
+/* ---- スタンプちょう ---- */
+.stamp-book { list-style: none; margin: 0 0 var(--sp-6); padding: 0; display: grid; gap: var(--gap-tap); grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+.stamp-slot {
+  display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--sp-1);
+  padding: var(--sp-4) var(--sp-2); background: var(--c-surface); border: 3px dashed var(--c-stone); min-height: 200px;
+}
+.stamp-slot .icon { width: 80px; height: 80px; color: var(--c-stone-light); }
+.stamp-slot.is-got { border-style: solid; border-color: var(--c-line); background: #fffbea; }
+.stamp-slot.is-got .icon { color: var(--c-gold); filter: drop-shadow(3px 3px 0 var(--c-dirt-dark)); }
+.stamp-slot .lv { font-family: var(--font-head); }
+.stamp-slot .date { font-size: 15px; color: var(--c-text-sub); }
+
+/* ---- ヘッダーのボタン（ふりがな） ---- */
+.btn[aria-pressed="false"].btn-toggle { --btn-bg: var(--c-stone); }
+.btn[aria-pressed="true"].btn-toggle { --btn-bg: var(--c-dirt); }
+
+/* ---- おうちの人と いっしょに マーク ---- */
+.with-adult {
+  display: flex; gap: var(--sp-3); align-items: center;
+  background: var(--c-dirt-light); border: 3px solid var(--c-dirt); padding: var(--sp-3) var(--sp-4); margin: 0 0 var(--sp-5);
+}
+.with-adult .icon { width: 40px; height: 40px; flex: none; color: var(--c-dirt); }
+
+/* ---- 注意・ヒントの箱 ---- */
+.box { border: 3px solid var(--c-line); padding: var(--sp-4); margin: 0 0 var(--sp-5); background: var(--c-surface); }
+.box > :last-child { margin-bottom: 0; }
+.box-title { display: flex; align-items: center; gap: var(--sp-2); font-family: var(--font-head); margin-bottom: var(--sp-2); }
+.box-title .icon { width: 32px; height: 32px; flex: none; }
+.box-alert { background: var(--c-alert-light); border-color: var(--c-alert); }
+.box-alert .box-title { color: var(--c-alert); }
+.box-hint { background: var(--c-sky-light); border-color: var(--c-sky); }
+.box-hint .box-title { color: var(--c-sky-dark); }
+.box-why { background: var(--c-grass-light); border-color: var(--c-grass); }
+.box-why .box-title { color: var(--c-grass-dark); }
+
+@media (max-width: 480px) {
+  :root { --tile-w: 44px; }
+  .tile { min-height: 68px; }
+  .tile .tile-face { font-size: 24px; min-height: 30px; }
+  .step-nav .btn { min-width: 0; font-size: var(--fs-body); }
+}

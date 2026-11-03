@@ -6,19 +6,17 @@
   <meta name="description" content="小学生が Switch 版マインクラフトで コマンドブロックの プログラミングを おぼえる ための ひこうしきの サイト">
   <title>マイクラ コマンド ぼうけん</title>
   <link rel="icon" href="images/guide.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="fonts/fonts.css">
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body data-root="." data-kids="true">
   <main id="main" class="wrap" data-yomi>
     <h1 class="visually-hidden">マイクラ コマンド ぼうけん</h1>
 
-    <section class="hello" aria-label="あんないやく からの ひとこと">
-      <img class="guide-face" src="images/guide.svg" alt="" width="72" height="72">
-      <div class="bubble card">
-        <p>やあ！ いっしょに マイクラの コマンドを おぼえよう。</p>
-        <p><ruby>光<rt>ひか</rt></ruby>って いる マスから はじめてね。</p>
-      </div>
-    </section>
+    <div class="guide">
+      <p>やあ！ いっしょに マイクラの コマンドを おぼえよう。</p>
+      <p><ruby>光<rt>ひか</rt></ruby>って いる マスから はじめてね。</p>
+    </div>
 
     <h2 class="section-title">レベルの すごろく</h2>
     <p>スタンプ <span id="stamp-count">0 / 6</span></p>
@@ -40,8 +38,10 @@
   </main>
 
   <script src="js/data.js"></script>
+  <script src="js/icons.js"></script>
   <script src="js/progress.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/parts.js"></script>
   <script src="js/top.js"></script>
 </body>
 </html>

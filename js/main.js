@@ -50,6 +50,7 @@
     var title = el("a", { class: "site-title", href: url("index.html") }, ICONS.logo + "<span>" + siteName + "</span>");
     wrap.appendChild(title);
     var tools = el("div", { class: "header-tools" });
+    tools.appendChild(buildFuriganaButton());
     if (isKids) {
       var yomi = buildYomiageButton();
       if (yomi) tools.appendChild(yomi);
@@ -57,6 +58,27 @@
     wrap.appendChild(tools);
     header.appendChild(wrap);
     body.insertBefore(header, body.firstChild);
+  }
+
+  /* ---- ふりがな ON/OFF（rt を CSS で かくすだけ）。子ども向けは さいしょ ON、保護者向けは OFF ---- */
+  function buildFuriganaButton() {
+    var P = window.Progress;
+    var prefKey = isKids ? "furigana-kids" : "furigana-parents";
+    var stored = P ? P.getPref(prefKey, null) : null;
+    var on = stored === null ? isKids : stored;
+    var btn = el("button", { type: "button", class: "btn btn-small btn-toggle", id: "furigana-toggle" });
+    function render() {
+      body.classList.toggle("no-furigana", !on);
+      btn.setAttribute("aria-pressed", on ? "true" : "false");
+      btn.innerHTML = "<span><ruby>字<rt>じ</rt></ruby></span><span>ふりがな " + (on ? "あり" : "なし") + "</span>";
+    }
+    btn.addEventListener("click", function () {
+      on = !on;
+      if (P) P.setPref(prefKey, on);
+      render();
+    });
+    render();
+    return btn;
   }
 
   /* ---- パンくず（トップ以外） ---- */

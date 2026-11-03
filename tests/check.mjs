@@ -15,7 +15,7 @@ const { chromium } = createRequire(import.meta.url)("playwright");
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const BASE = "/minecraft-learning/";
-const PAGES = ["index.html", "404.html"];
+const PAGES = ["index.html", "404.html", "pages/stamps.html", "pages/parts.html"];
 const WIDTHS = [
   { name: "phone", width: 375, height: 740 },
   { name: "tablet-portrait", width: 768, height: 1024 },
@@ -168,6 +168,55 @@ for (const link of allLinks) {
     return window.SiteSpeech.textForSpeech(div);
   });
   if (!text.includes("ひかって") || text.includes("/tp") || text.includes("光")) fail(`よみあげの文がおかしい: ${text}`);
+  await context.close();
+}
+
+// 8) 部品：タイル・ステップ・スタンプ・ふりがな
+{
+  const context = await browser.newContext({ viewport: { width: 768, height: 1024 }, hasTouch: true });
+  const page = await context.newPage();
+  const errors = [];
+  page.on("pageerror", (e) => errors.push(e.message));
+  await page.goto(origin + BASE + "pages/parts.html");
+  // タイル：/time set day は 13 もじ、スペースは「スペース」の名前つき
+  const n = await page.locator('.tiles[data-cmd="/time set day"]').first().locator(".tile").count();
+  if (n !== 13) fail(`タイルの数がちがう: ${n}`);
+  const names = await page.locator('.tiles[data-cmd="/tp @s ~ ~5 ~"] .tile-name').allTextContents();
+  for (const want of ["スラッシュ", "アットマーク", "にょろ", "スペース"]) if (!names.includes(want)) fail(`記号の名前「${want}」がない`);
+  // 打ったよ：3回で のこり 10
+  const t = page.locator(".tiles[data-track]").first();
+  for (let i = 0; i < 3; i++) await t.locator('[data-act="next"]').click();
+  const left = await t.locator(".tile-count").textContent();
+  if (left !== "あと 10 もじ") fail(`打ったよ が うごかない: ${left}`);
+  // キーボード：t i m e s d a y が光る
+  const used = await page.locator(".kbd .kbd-key.is-used").allTextContents();
+  for (const k of ["t", "i", "m", "e", "s", "d", "a", "y"]) if (!used.includes(k)) fail(`キーボードで ${k} が光っていない`);
+  // ステップ：つぎへ → 2 / 4、リロードしても 2 / 4
+  await page.locator(".step-next").click();
+  let c = await page.locator(".step-count").textContent();
+  if (c !== "2 / 4") fail(`ステップが進まない: ${c}`);
+  await page.reload();
+  c = await page.locator(".step-count").textContent();
+  if (c !== "2 / 4") fail(`ステップの続きから再開できない: ${c}`);
+  // スタンプ
+  await page.locator(".step-next").click();
+  await page.locator(".step-next").click();
+  await page.locator('[data-stamp="1"]').click();
+  if (!(await page.locator(".celebrate").isVisible())) fail("スタンプのお祝いが出ない");
+  await page.screenshot({ path: join(ROOT, "tests/screenshots", "celebrate@tablet.png") });
+  await page.locator(".celebrate [data-close]").click();
+  // ふりがな ON/OFF
+  await page.locator("#furigana-toggle").click();
+  const rtHidden = await page.evaluate(() => getComputedStyle(document.querySelector("rt")).display === "none");
+  if (!rtHidden) fail("ふりがなが けせない");
+  // スタンプちょう・トップに反映
+  await page.goto(origin + BASE + "pages/stamps.html");
+  const got = await page.locator(".stamp-slot.is-got").count();
+  if (got !== 1) fail(`スタンプちょうに反映されない: ${got}`);
+  await page.goto(origin + BASE + "index.html");
+  const first = await page.locator("#sugoroku .square").first().getAttribute("data-state");
+  if (first !== "clear") fail(`トップに反映されない: ${first}`);
+  if (errors.length) fail("部品でエラー: " + errors.join(" / "));
   await context.close();
 }
 
