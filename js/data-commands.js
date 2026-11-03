@@ -155,7 +155,7 @@
       status: "doc", checkedVersion: null
     },
     {
-      id: "tp", name: "/tp", read: "テレポート",
+      id: "tp", name: "/tp", read: "テレポート", refId: "teleport",
       yomi: ["てれぽーと", "いどう", "わーぷ", "tp", "teleport"],
       level: 2, where: "both",
       what: "すきな ばしょへ いっしゅんで いどう できる コマンド。",

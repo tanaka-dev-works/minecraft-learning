@@ -125,3 +125,12 @@
 - **titleraw**：`/titleraw <player: target> <titleLocation> <raw json titleText: json>` ほか
 
 権限はどのページも「Game Directors」。チートが要らないのは `/say` `/gamerule` `/tellraw`。
+
+## 大ずかんでの分類（フェーズ10・11）
+
+- **Switch で使える（63）**：上の表のうち、下の2つ以外すべて。くわしいページ（構文パターン・引数・例文）あり
+- **専用サーバー（BDS）だけ（9）**：allowlist, changesetting, permission, reloadconfig, reloadpacketlimitconfig, save, sendshowstoreoffer, stop, transfer
+- **アドオンやパソコンが必要（10）**：dialogue, function, gametest, packstack, project, reload, schedule, script, scriptevent, wsserver
+- **教育版だけ（6、公式一覧の外）**：ability, agent, classroommode, code, immutableworld, worldbuilder（未確認）
+
+op / deop / kick / setmaxplayers はマルチプレイの管理用なので、ページに「おうちの人と いっしょに」と書いています。

@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>パワーアップ ゆか｜マイクラ コマンド ぼうけん</title>
+  <link rel="icon" href="../images/guide.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-root=".." data-kids="true" data-crumbs='[["コマンド大ずかん", "pages/reference.html"], ["パワーアップ ゆか", ""]]'>
+  <main id="main" class="wrap" data-yomi>
+    <h1 class="work-title"><span class="adv-chip">おうよう</span>パワーアップ ゆか</h1>
+    <div class="box box-hint"><p class="box-title">この さくひんは おうよう</p><p>レベル6まで おわった <ruby>人<rt>ひと</rt></ruby>むけ。 わからない コマンドは <a href="../pages/reference.html">コマンド大ずかん</a>で しらべよう。</p></div>
+    <div class="stepper" data-key="works/power-floor">
+<section class="step"><h2>できあがり</h2>
+<div class="guide" data-mood="normal"><p><ruby>金<rt>きん</rt></ruby>ブロックに のると はやく なる、 エメラルドブロックに のると たかく とべる ゆかだよ。</p></div><figure class="diagram"><svg viewBox="-4 -4 392 200" role="img" aria-label="<ruby>上<rt>うえ</rt></ruby>から <ruby>見<rt>み</rt></ruby>た ず"><rect x="0" y="0" width="384" height="192" fill="#f6f1e4"/><line x1="0" y1="0" x2="0" y2="192" stroke="#d8cfbd" stroke-width="2"/><line x1="64" y1="0" x2="64" y2="192" stroke="#d8cfbd" stroke-width="2"/><line x1="128" y1="0" x2="128" y2="192" stroke="#d8cfbd" stroke-width="2"/><line x1="192" y1="0" x2="192" y2="192" stroke="#d8cfbd" stroke-width="2"/><line x1="256" y1="0" x2="256" y2="192" stroke="#d8cfbd" stroke-width="2"/><line x1="320" y1="0" x2="320" y2="192" stroke="#d8cfbd" stroke-width="2"/><line x1="384" y1="0" x2="384" y2="192" stroke="#d8cfbd" stroke-width="2"/><line x1="0" y1="0" x2="384" y2="0" stroke="#d8cfbd" stroke-width="2"/><line x1="0" y1="64" x2="384" y2="64" stroke="#d8cfbd" stroke-width="2"/><line x1="0" y1="128" x2="384" y2="128" stroke="#d8cfbd" stroke-width="2"/><line x1="0" y1="192" x2="384" y2="192" stroke="#d8cfbd" stroke-width="2"/><rect x="3" y="3" width="58" height="58" fill="#7b3fa0" stroke="#3a3329" stroke-width="3"/><circle cx="14" cy="14" r="12" fill="#fff" stroke="#3a3329" stroke-width="2"/><text x="14" y="19" text-anchor="middle" font-size="15" font-weight="700" fill="#2b2620">1</text><rect x="3" y="131" width="58" height="58" fill="#7b3fa0" stroke="#3a3329" stroke-width="3"/><circle cx="14" cy="142" r="12" fill="#fff" stroke="#3a3329" stroke-width="2"/><text x="14" y="147" text-anchor="middle" font-size="15" font-weight="700" fill="#2b2620">2</text><rect x="131" y="67" width="58" height="58" fill="#f2c230" stroke="#3a3329" stroke-width="3"/><rect x="195" y="67" width="58" height="58" fill="#f2c230" stroke="#3a3329" stroke-width="3"/><rect x="259" y="67" width="58" height="58" fill="#3fbf6f" stroke="#3a3329" stroke-width="3"/><rect x="323" y="67" width="58" height="58" fill="#3fbf6f" stroke="#3a3329" stroke-width="3"/><circle cx="160.0" cy="160.0" r="19.2" fill="#1f6fa8" stroke="#3a3329" stroke-width="3"/></svg><figcaption><strong><ruby>上<rt>うえ</rt></ruby>から <ruby>見<rt>み</rt></ruby>た ず</strong> （リピートは どこに おいても いい）<span class="legend"><span class="lg"><span class="lg-sw lg-repeat" style="background:#7b3fa0"></span>リピート</span><span class="lg"><span class="lg-sw lg-gold" style="background:#f2c230"></span><ruby>金<rt>きん</rt></ruby>ブロック</span><span class="lg"><span class="lg-sw lg-emerald" style="background:#3fbf6f"></span>エメラルドブロック</span><span class="lg"><span class="lg-sw lg-player" style="background:#1f6fa8"></span>じぶん</span><span class="lg">→ やじるしは ブロックの むき</span></span></figcaption></figure><div class="facts">
+  <div class="fact"><span class="js-icon" data-icon="flag"></span><span>おうよう</span></div>
+  <div class="fact"><span class="js-icon" data-icon="clock"></span><span>20ぷん くらい</span></div>
+  <div class="fact"><span class="js-icon" data-icon="blocks"></span><span>コマンドブロック 2こ</span></div>
+</div>
+<h3>ひつような もの</h3><ul class="rule-list"><li>コマンドブロック 2こ</li><li><ruby>金<rt>きん</rt></ruby>ブロック・エメラルドブロック いくつか</li></ul>
+</section>
+<section class="step"><h2>しくみ</h2>
+<p><code>execute</code> を つかうと 「だれが」「どこで」「もし〜なら」を 1ぎょうで かけるよ。</p><ul class="rule-list"><li><code>as @p</code>：ちかくの <ruby>人<rt>ひと</rt></ruby>が</li><li><code>at @s</code>：その <ruby>人<rt>ひと</rt></ruby>の ばしょで</li><li><code>if block ~ ~-1 ~ gold_block</code>：もし あしの <ruby>下<rt>した</rt></ruby>が <ruby>金<rt>きん</rt></ruby>ブロック なら</li><li><code>run effect @s speed 1 3 true</code>：はやく なる</li></ul><div class="box box-why"><p class="box-title">もし 〜 なら</p><p>レベル5の 「じょうけんつき」と おなじ 「もし」を、 コマンドの なかに かけるんだ。</p></div>
+</section>
+<section class="step"><h2>じゅんび</h2>
+<div class="with-adult"><p>はじめる まえに、 チャットで <code>/gamerule commandblockoutput false</code> を うって おこう。</p></div><div class="tiles" data-cmd="/gamerule commandblockoutput false"></div>
+</section>
+<section class="step"><h2>ブロックの せってい</h2>
+<div class="cb-card cb-repeat">
+  <p class="cb-head"><span class="cb-num">1</span><span class="cb-chip cb-chip-repeat">リピート（むらさき）</span></p>
+  <dl class="cb-set">
+    <div><dt>しゅるい</dt><dd>リピート：ずっと くりかえす</dd></div>
+    <div><dt>じょうけん</dt><dd>じょうけん なし</dd></div>
+    <div><dt>レッドストーン</dt><dd>つねに オン</dd></div>
+    <div><dt>おくらせる じかん</dt><dd>0</dd></div>
+  </dl>
+  <p class="cb-cmd-label">いれる コマンド</p>
+  <div class="tiles" data-cmd="/execute as @p at @s if block ~ ~-1 ~ gold_block run effect @s speed 1 3 true"></div>
+</div><div class="cb-card cb-repeat">
+  <p class="cb-head"><span class="cb-num">2</span><span class="cb-chip cb-chip-repeat">リピート（むらさき）</span></p>
+  <dl class="cb-set">
+    <div><dt>しゅるい</dt><dd>リピート：ずっと くりかえす</dd></div>
+    <div><dt>じょうけん</dt><dd>じょうけん なし</dd></div>
+    <div><dt>レッドストーン</dt><dd>つねに オン</dd></div>
+    <div><dt>おくらせる じかん</dt><dd>0</dd></div>
+  </dl>
+  <p class="cb-cmd-label">いれる コマンド</p>
+  <div class="tiles" data-cmd="/execute as @p at @s if block ~ ~-1 ~ emerald_block run effect @s jump_boost 1 3 true"></div>
+</div>
+</section>
+<section class="step"><h2>1. ゆかを つくる</h2>
+<p><ruby>金<rt>きん</rt></ruby>ブロックと エメラルドブロックを じめんに うめこむ。 ならべて みちに すると たのしいよ。</p>
+</section>
+<section class="step"><h2>2. 1ばんに いれる</h2>
+<div class="tiles" data-cmd="/execute as @p at @s if block ~ ~-1 ~ gold_block run effect @s speed 1 3 true" data-track></div><p>リピート・じょうけん なし・<strong>つねに オン</strong>。</p>
+</section>
+<section class="step"><h2>3. 2ばんに いれる</h2>
+<div class="tiles" data-cmd="/execute as @p at @s if block ~ ~-1 ~ emerald_block run effect @s jump_boost 1 3 true" data-track></div><p>リピート・じょうけん なし・<strong>つねに オン</strong>。</p>
+</section>
+<section class="step"><h2>あそんで みよう</h2>
+<div class="guide" data-mood="happy"><p><ruby>金<rt>きん</rt></ruby>の うえで はやく なったかな？ エメラルドの うえで ジャンプして みよう！</p></div><div class="next-links"><a class="btn btn-diamond" href="../pages/reference.html"><span class="js-icon" data-icon="book-open"></span><span>コマンド大ずかんへ</span></a></div>
+</section>
+<section class="step"><h2>うまく いかない とき</h2>
+<div class="trouble"><p class="trouble-q">なにも おきない</p><p>gold_block・emerald_block の つづりと、 <code>~ ~-1 ~</code> の マイナスを たしかめよう。</p></div><div class="trouble"><p class="trouble-q">のって いない のに はやい まま</p><p>こうかは 1びょう のこるよ。 すこし まてば もどる。</p></div><h3>もっと くふう</h3><ul class="rule-list"><li>diamond_block と slow_falling で ふわふわ ゆか。</li><li><code>if</code> を <code>unless</code> に すると 「〜で なければ」。 なにが おきるかな？</li></ul><h3>つかった コマンド</h3><p class="rel-links"><a class="btn btn-diamond btn-small" href="../pages/reference.html?id=execute">/execute</a><a class="btn btn-diamond btn-small" href="../pages/reference.html?id=effect">/effect</a></p><p><button type="button" class="btn btn-small" data-step-restart>さいしょから</button></p>
+</section>
+
+    </div>
+  </main>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/data-commands.js"></script>
+  <script src="../js/icons.js"></script>
+  <script src="../js/progress.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/parts.js"></script>
+</body>
+</html>

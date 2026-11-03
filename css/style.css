@@ -118,9 +118,14 @@ p { margin: 0 0 var(--sp-4); }
 }
 .site-title .logo { width: 36px; height: 36px; image-rendering: pixelated; }
 .header-tools { display: flex; gap: var(--sp-3); }
+.header-tools .btn span { white-space: nowrap; }
+@media (max-width: 520px) {
+  .header-tools { width: 100%; gap: var(--sp-2); }
+  .header-tools .btn { flex: 1 1 0; min-width: 0; padding-left: var(--sp-2); padding-right: var(--sp-2); font-size: 17px; gap: var(--sp-1); }
+}
 
 /* ===== パンくず ===== */
-.breadcrumb { font-size: var(--fs-small); padding: var(--sp-3) 0 0; }
+.breadcrumb { font-size: var(--fs-small); padding-top: var(--sp-3); }
 .breadcrumb ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: var(--sp-2); }
 .breadcrumb li + li::before { content: "›"; margin-right: var(--sp-2); color: var(--c-text-sub); }
 
@@ -677,3 +682,17 @@ strong.x { color: #b3261e; } strong.y { color: var(--c-grass-dark); } strong.z {
 .cl-opt input { width: 24px; height: 24px; }
 .cl-input { font: inherit; font-size: var(--fs-body); min-height: var(--tap); padding: var(--sp-1) var(--sp-3); border: 3px solid var(--c-line); width: 100%; max-width: 420px; border-radius: 0; }
 @media (min-width: 900px) { .cl-row { grid-template-columns: 1fr auto 260px; align-items: center; } }
+
+/* ===== コマンド大ずかん（応用編） ===== */
+.ref-jump { display: flex; flex-wrap: wrap; gap: var(--sp-2); margin: var(--sp-4) 0; }
+.ref-cat { margin-top: var(--sp-6); scroll-margin-top: var(--sp-4); }
+.ref-names { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--sp-2); }
+.ref-names li { display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--sp-2) var(--sp-3); padding: var(--sp-2) var(--sp-3); border: 2px solid var(--c-line); background: var(--c-surface); }
+.ref-names code.big { font-family: var(--font-code); font-size: 20px; min-width: 9em; word-break: break-all; }
+.pattern { border: 3px solid var(--c-line); background: var(--c-surface); padding: var(--sp-3); margin-bottom: var(--sp-3); }
+.pattern-no { margin: 0; font-size: 15px; color: var(--c-text-sub); }
+.pattern-syntax { margin: var(--sp-1) 0; }
+.pattern-syntax code { font-family: var(--font-code); font-size: 17px; word-break: break-all; }
+.pattern-kid { margin: 0; }
+.opt-chip { display: inline-block; margin-left: var(--sp-2); padding: 0 var(--sp-2); font-size: 14px; border: 2px solid var(--c-line); background: var(--c-stone-light); }
+.adv-chip { display: inline-block; padding: 0 var(--sp-2); border: 3px solid var(--c-line); background: #e8d5ff; font-size: 15px; }

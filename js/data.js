@@ -69,7 +69,7 @@ window.SITE_DATA = {
     { id: "programming", title: "プログラミングって なに？", href: "pages/programming.html", menu: "lookup", icon: "gamepad", color: "btn-sky", yomi: ["ぷろぐらみんぐ", "めいれい", "じゅんばん", "もし", "くりかえし"], sub: "まとめ", ready: true },
     { id: "cheatsheet", title: "はやみひょう（コマンド）", href: "pages/cheatsheet.html", menu: "lookup", icon: "list-box", color: "btn-grass", yomi: ["はやみひょう", "まとめ"], sub: "1まいで ぜんぶ", ready: true },
     { id: "cheatsheet-blocks", title: "はやみひょう（ブロックの せってい）", href: "pages/cheatsheet-blocks.html", menu: "lookup", icon: "list-box", color: "btn-grass", yomi: ["はやみひょう", "せってい"], sub: "コマンドブロックの せってい", ready: true },
-    { id: "reference", title: "コマンド大ずかん", href: "pages/reference.html", menu: "lookup", icon: "book-open", color: "btn-grass", yomi: ["だいずかん", "おうよう", "ぜんぶ"], sub: "もっと しりたい ひとへ", ready: false },
+    { id: "reference", title: "コマンド大ずかん", href: "pages/reference.html", menu: "lookup", icon: "book-open", color: "btn-grass", yomi: ["だいずかん", "おうよう", "ぜんぶ"], sub: "もっと しりたい ひとへ", ready: true },
     { id: "dont", title: "やっては いけない コマンド", href: "pages/dont.html", menu: "lookup", icon: "warning-diamond", color: "btn-dirt", yomi: ["だめ", "あぶない", "ちゅうい", "やってはいけない"], sub: "まもって あそぼう", ready: true },
     { id: "stamps", title: "スタンプちょう", href: "pages/stamps.html", menu: "lookup", icon: "trophy", color: "btn-dirt", yomi: ["すたんぷ"], sub: "あつめた スタンプ", ready: true },
     { id: "start", title: "はじめに（ワールドの準備）", href: "pages/start.html", menu: "parents", icon: "gamepad", color: "btn-grass", yomi: ["じゅんび", "ちーと", "わーるど"], sub: "チート・コマンドブロックの入手", ready: true },
@@ -86,7 +86,11 @@ window.SITE_DATA = {
     { id: "teleport", level: 4, title: "そらとび テレポート", href: "works/teleport.html", minutes: 20, stamp: true, yomi: ["てれぽーと", "そら", "ちぇーん"] },
     { id: "item-giver", level: 4, title: "アイテム くばり そうち", href: "works/item-giver.html", minutes: 20, stamp: false, yomi: ["あいてむ", "くばる", "どうぐ"] },
     { id: "auto-door", level: 5, title: "じどう ドア", href: "works/auto-door.html", minutes: 30, stamp: true, yomi: ["どあ", "じどう", "りぴーと", "じょうけん"] },
-    { id: "minigame", level: 6, title: "ボタン ラリー（ミニゲーム）", href: "works/minigame.html", minutes: 40, stamp: true, yomi: ["みにげーむ", "げーむ", "すこあ", "てんすう"] }
+    { id: "minigame", level: 6, title: "ボタン ラリー（ミニゲーム）", href: "works/minigame.html", minutes: 40, stamp: true, yomi: ["みにげーむ", "げーむ", "すこあ", "てんすう"] },
+    /* おうよう（レベル6の あと。スタンプなし。コマンド大ずかんから つながる） */
+    { id: "score-timer", level: 6, adv: true, title: "30びょう チャレンジ", href: "works/score-timer.html", minutes: 40, stamp: false, uses: ["scoreboard", "tag", "execute"], yomi: ["たいまー", "じかん", "すこあ", "ちゃれんじ"] },
+    { id: "power-floor", level: 6, adv: true, title: "パワーアップ ゆか", href: "works/power-floor.html", minutes: 20, stamp: false, uses: ["execute", "effect"], yomi: ["ゆか", "ぱわーあっぷ", "えくすきゅーと", "もし"] },
+    { id: "copy-machine", level: 6, adv: true, title: "いえ コピー マシン", href: "works/copy-machine.html", minutes: 30, stamp: false, uses: ["clone", "fill"], yomi: ["こぴー", "くろーん", "いえ", "けんちく"] }
   ],
 
   commands: [],
