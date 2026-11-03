@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ばしょと あいて｜マイクラ コマンド ぼうけん</title>
+  <link rel="icon" href="../images/guide.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-root=".." data-kids="true" data-crumbs='[["しらべる", "pages/search.html"], ["ばしょと あいて", ""]]'>
+  <main id="main" class="wrap" data-yomi>
+    <h1>ばしょと あいて</h1>
+    <div class="guide"><p>コマンドで いちばん だいじなのは 「どこで」と 「だれに」。</p></div>
+
+    <h2>ばしょ（ざひょう）</h2>
+    <p>マイクラの ばしょは <strong>3つの かず</strong>で あらわすよ。</p>
+    <svg class="xyz" viewBox="0 0 220 180" role="img" aria-label="X は よこ、 Y は たかさ、 Z は おくゆき">
+  <rect x="70" y="70" width="60" height="60" fill="#e3f1d8" stroke="#3a3329" stroke-width="3"/>
+  <line x1="100" y1="100" x2="200" y2="100" stroke="#b3261e" stroke-width="6"/><polygon points="200,90 216,100 200,110" fill="#b3261e"/>
+  <text x="196" y="130" font-size="22" fill="#b3261e" font-weight="700">X</text>
+  <line x1="100" y1="100" x2="100" y2="12" stroke="#3f7d2c" stroke-width="6"/><polygon points="90,14 100,0 110,14" fill="#3f7d2c"/>
+  <text x="112" y="22" font-size="22" fill="#2a5a1c" font-weight="700">Y</text>
+  <line x1="100" y1="100" x2="40" y2="160" stroke="#1f6fa8" stroke-width="6"/><polygon points="30,156 32,174 46,166" fill="#1f6fa8"/>
+  <text x="8" y="150" font-size="22" fill="#154f7a" font-weight="700">Z</text>
+</svg>
+    <ul class="rule-list">
+      <li><strong class="x">X</strong>：よこ（ひがし と にし）</li>
+      <li><strong class="y">Y</strong>：たかさ（<ruby>上<rt>うえ</rt></ruby> と <ruby>下<rt>した</rt></ruby>）</li>
+      <li><strong class="z">Z</strong>：おくゆき（みなみ と きた）</li>
+    </ul>
+    <p>いまの ばしょは、 ワールドの せっていで 「ざひょうを ひょうじ」を オンに すると <ruby>画面<rt>がめん</rt></ruby>に <ruby>出<rt>で</rt></ruby>るよ。<span class="unverified">【じっきで たしかめる】</span></p>
+
+    <h2>~ （にょろ）＝ いまの ばしょから</h2>
+    <p><code>~</code> は 「いまの ばしょ」。 <code>~5</code> は 「いまの ばしょから 5マス」。</p>
+    <div class="tiles" data-cmd="/tp @s ~ ~5 ~"></div>
+    <p>→ X と Z は そのまま、 Y（たかさ）だけ 5マス <ruby>上<rt>うえ</rt></ruby>。</p>
+    <div class="box box-why">
+      <p class="box-title">なぜ そうなるの？</p>
+      <p>~ を つかうと、 どこに いても おなじ うごきが できるよ。 かずを ぜんぶ おぼえなくて いい。</p>
+    </div>
+
+    <h2>^ （やま）＝ むいて いる ほうこう</h2>
+    <p><code>^ ^ ^2</code> は 「<ruby>目<rt>め</rt></ruby>の <ruby>前<rt>まえ</rt></ruby> 2マス」。 むいて いる ほうに あわせて かわるよ。</p>
+    <div class="tiles" data-cmd="/setblock ^ ^ ^2 gold_block"></div>
+
+    <h2>あいて（セレクター）</h2>
+    <ul class="sel-cards"><li class="sel-card"><span class="js-icon" data-icon="human"></span><code class="big">@s</code><span class="sel-name">じぶん</span><span class="sel-desc">コマンドを うった <ruby>人<rt>ひと</rt></ruby>。 コマンドブロックでは つかわない。</span></li><li class="sel-card"><span class="js-icon" data-icon="map-pin"></span><code class="big">@p</code><span class="sel-name">いちばん ちかい <ruby>人<rt>ひと</rt></ruby></span><span class="sel-desc">コマンドブロックで よく つかう。</span></li><li class="sel-card"><span class="js-icon" data-icon="users"></span><code class="big">@a</code><span class="sel-name">みんな</span><span class="sel-desc">ワールドに いる <ruby>人<rt>ひと</rt></ruby> <ruby>全員<rt>ぜんいん</rt></ruby>。</span></li><li class="sel-card"><span class="js-icon" data-icon="gift"></span><code class="big">@r</code><span class="sel-name">だれか ひとり</span><span class="sel-desc">ランダムに えらぶ。</span></li><li class="sel-card"><span class="js-icon" data-icon="warning-diamond"></span><code class="big">@e</code><span class="sel-name">ぜんぶの もの</span><span class="sel-desc"><ruby>人<rt>ひと</rt></ruby>も モブも アイテムも。 かならず しゅるいを きめて つかう。</span></li></ul>
+
+    <h2>あいてを しぼる</h2>
+    <p>あいての うしろに <code>[ ]</code>（かっこ）を つけると、 しぼりこめるよ。</p>
+    <ul class="sel-cards">
+      <li class="sel-card"><code class="big">r=3</code><span class="sel-name">3マス いない</span><span class="sel-desc">ちかくに いる あいてだけ。</span></li>
+      <li class="sel-card"><code class="big">type=pig</code><span class="sel-name">しゅるい</span><span class="sel-desc">ブタだけ。</span></li>
+      <li class="sel-card"><code class="big">c=1</code><span class="sel-name">かず</span><span class="sel-desc">1ぴき（1<ruby>人<rt>り</rt></ruby>）だけ。</span></li>
+      <li class="sel-card"><code class="big">tag=oni</code><span class="sel-name">しるし</span><span class="sel-desc">oni の しるしが ある あいてだけ。</span></li>
+    </ul>
+    <div class="tiles" data-cmd="/kill @e[type=pig,r=10]"></div>
+    <p>→ 10マス いないの ブタだけ。 なんこか つける ときは <code>,</code>（カンマ）で くぎる。 スペースは いれない。</p>
+  </main>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/data-commands.js"></script>
+  <script src="../js/icons.js"></script>
+  <script src="../js/progress.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/parts.js"></script>
+</body>
+</html>

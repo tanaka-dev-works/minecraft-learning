@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>やっては いけない コマンド｜マイクラ コマンド ぼうけん</title>
+  <link rel="icon" href="../images/guide.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="../fonts/fonts.css">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body data-root=".." data-kids="true" data-crumbs='[["しらべる", "pages/search.html"], ["やっては いけない コマンド", ""]]'>
+  <main id="main" class="wrap" data-yomi>
+    <h1>やっては いけない コマンド</h1>
+    <div class="guide"><p>ここに ある ことを まもれば、 あんしんして あそべるよ。</p></div>
+
+    <h2>やくそく</h2>
+    <ol class="promise-list">
+      <li><span class="js-icon" data-icon="map-pin"></span><span>コマンドは <strong>れんしゅう ワールド</strong>だけで うつ。</span></li>
+      <li><span class="js-icon" data-icon="users"></span><span>ともだちの ワールドや サーバーでは うたない。</span></li>
+      <li><span class="js-icon" data-icon="lock"></span><span>だいじな ワールドでは チートを オンに しない。</span></li>
+      <li><span class="js-icon" data-icon="comment"></span><span>さいしょの <strong>/</strong> （スラッシュ）を わすれない。</span></li>
+    </ol>
+
+    <div class="box box-alert">
+      <p class="box-title">/ を わすれると どうなる？</p>
+      <p>うった <ruby>文字<rt>もじ</rt></ruby>が ふつうの チャットに なるよ。</p>
+      <p>オンラインでは、 みんなに <ruby>見<rt>み</rt></ruby>えて しまう。</p>
+      <p>おくる まえに、 いちばん さいしょが / か たしかめよう。</p>
+      <div class="tiles" data-cmd="/time set day"></div>
+    </div>
+
+    <h2>うっては いけない コマンド</h2>
+
+    <section class="dont-card">
+      <h3><span class="dont-mark" aria-hidden="true">✕</span>とても ひろい /fill</h3>
+      <div class="tiles" data-cmd="/fill ~ ~ ~ ~100 ~100 ~100 air"></div>
+      <p>ワールドの おおきな ところが きえたり、 おもく なって うごかなく なるよ。</p>
+      <p class="ok-line"><strong>こうしよう：</strong> かずは 5 いないに しよう。</p>
+    </section>
+
+    <section class="dont-card">
+      <h3><span class="dont-mark" aria-hidden="true">✕</span>しゅるいを きめない /kill</h3>
+      <div class="tiles" data-cmd="/kill @e"></div>
+      <p>ペットも、 むらびとも、 じぶんも <ruby>全部<rt>ぜんぶ</rt></ruby> きえて しまうよ。 もとに もどせない。</p>
+      <p class="ok-line"><strong>こうしよう：</strong> かならず <code>type=</code> を つける。</p>
+      <div class="tiles" data-cmd="/kill @e[type=zombie]"></div>
+    </section>
+
+    <section class="dont-card">
+      <h3><span class="dont-mark" aria-hidden="true">✕</span>リピートで /summon</h3>
+      <div class="tiles" data-cmd="/summon pig"></div>
+      <p>リピートの コマンドブロックに いれると、 1びょうに なんども よびだして、 ふえつづけるよ。 ゲームが とても おもく なる。</p>
+      <p class="ok-line"><strong>こうしよう：</strong> /summon は インパルス（1かいだけ）で つかう。</p>
+    </section>
+
+    <section class="dont-card">
+      <h3><span class="dont-mark" aria-hidden="true">✕</span>なまえを つけない /clear</h3>
+      <div class="tiles" data-cmd="/clear"></div>
+      <p>もちものが <ruby>全部<rt>ぜんぶ</rt></ruby> きえるよ。</p>
+      <p class="ok-line"><strong>こうしよう：</strong> けしたい ものの なまえを つける。</p>
+      <div class="tiles" data-cmd="/clear @s dirt"></div>
+    </section>
+
+    <h2>おもく なったら とめる ほうほう</h2>
+    <ol class="steps-list">
+      <li>あわてないで、 コントローラーを おく。</li>
+      <li>リピート（むらさき）の コマンドブロックを こわす。</li>
+      <li>レッドストーンや レバーを はずす。</li>
+      <li>それでも だめなら、 おうちの <ruby>人<rt>ひと</rt></ruby>を よぶ。</li>
+    </ol>
+    <div class="with-adult"><p>おうちの <ruby>人<rt>ひと</rt></ruby>へ：うごかない ときは、 ポーズ<ruby>画面<rt>がめん</rt></ruby>から ワールドを ほぞんして おわり、 もう いちど ひらいて ください。 くわしくは「おうちの人へ」の ページに あります。</p></div>
+  </main>
+
+  <script src="../js/data.js"></script>
+  <script src="../js/data-commands.js"></script>
+  <script src="../js/icons.js"></script>
+  <script src="../js/progress.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/parts.js"></script>
+</body>
+</html>

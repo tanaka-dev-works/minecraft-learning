@@ -15,7 +15,7 @@ const { chromium } = createRequire(import.meta.url)("playwright");
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const BASE = "/minecraft-learning/";
-const PAGES = ["index.html", "404.html", "pages/stamps.html", "pages/parts.html", "pages/commands.html", "pages/command.html?id=tp", "pages/command.html?id=scoreboard", "pages/command.html?id=nope", "pages/search.html?q=てれぽーと"];
+const PAGES = ["index.html", "404.html", "pages/stamps.html", "pages/parts.html", "pages/commands.html", "pages/command.html?id=tp", "pages/command.html?id=scoreboard", "pages/command.html?id=nope", "pages/search.html?q=てれぽーと", "pages/dont.html", "pages/syntax.html", "pages/selectors.html", "pages/start.html", "pages/parents.html"];
 const WIDTHS = [
   { name: "phone", width: 375, height: 740 },
   { name: "tablet-portrait", width: 768, height: 1024 },
@@ -251,12 +251,38 @@ for (const link of allLinks) {
   const learned = await page.locator('a[href="command.html?id=give"] .cmd-learned').count();
   if (learned !== 1) fail("おぼえた が いちらんに 出ない");
   // 子ども向けページに外部リンクがない
-  for (const p of ["pages/command.html?id=tp", "pages/commands.html", "index.html"]) {
+  for (const p of ["pages/command.html?id=tp", "pages/commands.html", "index.html", "pages/dont.html", "pages/syntax.html", "pages/selectors.html", "pages/stamps.html"]) {
     await page.goto(origin + BASE + p);
     const ext = await page.evaluate(() => [...document.querySelectorAll("a[href]")].filter((a) => !a.href.startsWith(location.origin) && !a.href.startsWith("file:")).length);
     if (ext) fail(`${p}: 子ども向けページに外部リンクが ${ext} こ`);
+    const tables = await page.locator("main table").count();
+    if (tables) fail(`${p}: 子ども向けページに表がある`);
   }
   if (errors.length) fail("ずかんでエラー: " + errors.join(" / "));
+  await context.close();
+}
+
+// 10) 子ども向けページ：1年生の漢字 以外には ふりがな（ruby）が ついているか
+{
+  const GRADE1 = "一右雨円王音下火花貝学気九休玉金空月犬見五口校左三山子四糸字耳七車手十出女小上森人水正生青夕石赤千川先早草足村大男竹中虫町天田土二日入年白八百文木本名目立力林六";
+  const context = await browser.newContext({ viewport: { width: 768, height: 1024 } });
+  const page = await context.newPage();
+  const kidsPages = PAGES.filter((p) => !/start|parents|parts|404/.test(p));
+  for (const p of kidsPages) {
+    await page.goto(origin + BASE + p);
+    const found = await page.evaluate((g1) => {
+      const skip = "rt, ruby, .no-yomi, code, .tiles, .parents-box, script, style, .site-footer, .kbd";
+      const out = new Set();
+      const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+      let n;
+      while ((n = walker.nextNode())) {
+        if (n.parentElement.closest(skip)) continue;
+        for (const ch of n.textContent) if (/\p{Script=Han}/u.test(ch) && !g1.includes(ch)) out.add(ch);
+      }
+      return [...out].join("");
+    }, GRADE1);
+    if (found) fail(`${p}: ふりがなの ない 漢字: ${found}`);
+  }
   await context.close();
 }
 
