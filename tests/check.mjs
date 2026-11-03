@@ -15,7 +15,7 @@ const { chromium } = createRequire(import.meta.url)("playwright");
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const BASE = "/minecraft-learning/";
-const PAGES = ["index.html", "404.html", "pages/stamps.html", "pages/parts.html", "pages/commands.html", "pages/command.html?id=tp", "pages/command.html?id=scoreboard", "pages/command.html?id=nope", "pages/search.html?q=てれぽーと", "pages/dont.html", "pages/syntax.html", "pages/selectors.html", "pages/start.html", "pages/parents.html", "pages/level1.html", "pages/level2.html", "pages/level3.html", "works/morning.html", "works/block-magic.html", "works/diamond-button.html", "works/message.html", "pages/quiz.html", "pages/quiz.html?level=1", "pages/quiz.html?level=2", "pages/quiz.html?level=3", "pages/level4.html", "pages/level5.html", "pages/level6.html", "works/teleport.html", "works/item-giver.html", "works/auto-door.html", "works/minigame.html", "pages/quiz.html?level=6", "pages/command-blocks.html", "pages/troubleshooting.html", "pages/errors.html", "pages/programming.html", "pages/cheatsheet.html", "pages/cheatsheet-blocks.html", "pages/checklist.html"];
+const PAGES = ["index.html", "404.html", "pages/stamps.html", "pages/parts.html", "pages/commands.html", "pages/command.html?id=tp", "pages/command.html?id=scoreboard", "pages/command.html?id=nope", "pages/search.html?q=てれぽーと", "pages/dont.html", "pages/syntax.html", "pages/selectors.html", "pages/start.html", "pages/parents.html", "pages/level1.html", "pages/level2.html", "pages/level3.html", "works/morning.html", "works/block-magic.html", "works/diamond-button.html", "works/message.html", "pages/quiz.html", "pages/quiz.html?level=1", "pages/quiz.html?level=2", "pages/quiz.html?level=3", "pages/level4.html", "pages/level5.html", "pages/level6.html", "works/teleport.html", "works/item-giver.html", "works/auto-door.html", "works/minigame.html", "pages/quiz.html?level=6", "pages/command-blocks.html", "pages/troubleshooting.html", "pages/errors.html", "pages/programming.html", "pages/cheatsheet.html", "pages/cheatsheet-blocks.html", "pages/checklist.html", "pages/reference.html", "pages/reference.html?id=teleport", "pages/reference.html?id=camera", "pages/reference.html?id=stop", "pages/reference.html?id=nope"];
 const WIDTHS = [
   { name: "phone", width: 375, height: 740 },
   { name: "tablet-portrait", width: 768, height: 1024 },
@@ -257,6 +257,34 @@ for (const link of allLinks) {
     if (ext) fail(`${p}: 子ども向けページに外部リンクが ${ext} こ`);
     const tables = await page.locator("main table").count();
     if (tables) fail(`${p}: 子ども向けページに表がある`);
+  }
+  // コマンド大ずかん：公式一覧の 82個が ぜんぶ 3分類（＋その他）で のって いる
+  {
+    const official = (await readFile(join(ROOT, "docs/OFFICIAL-REFERENCE.md"), "utf8")).match(/^\| \d+ \| \/([a-z]+) \|/gm).map((l) => l.split("/")[1].split(" ")[0]);
+    await page.goto(origin + BASE + "pages/reference.html");
+    const refs = await page.evaluate(() => window.SITE_DATA.reference);
+    const ids = new Set(refs.map((r) => r.id));
+    if (official.length !== 82) fail("公式一覧の控えが 82個 ではない: " + official.length);
+    const missing = official.filter((n) => !ids.has(n));
+    if (missing.length) fail("大ずかんに ない コマンド: " + missing.join(", "));
+    for (const r of refs) {
+      if (!["switch", "bds", "edu", "other"].includes(r.cat)) fail(`${r.id}: 分類が ない`);
+      if (r.status === "doc" && !/^https:\/\/learn\.microsoft\.com\//.test(r.url)) fail(`${r.id}: 公式URLが ない`);
+      if (r.cat === "switch" && !(r.patterns && r.patterns.length)) fail(`${r.id}: 構文パターンが ない`);
+      if (r.cat !== "switch" && !r.reason) fail(`${r.id}: つかえない りゆうが ない`);
+    }
+    const cards = await page.locator("#cat-switch .cmd-card").count();
+    if (cards !== refs.filter((r) => r.cat === "switch").length) fail("大ずかん：Switch の カードの かずが あわない");
+    // 基本編 ⇔ 応用編の 相互リンク
+    await page.goto(origin + BASE + "pages/command.html?id=tp");
+    if (!(await page.locator('a[href="reference.html?id=teleport"]').count())) fail("/tp から 大ずかんへの リンクが ない");
+    await page.goto(origin + BASE + "pages/reference.html?id=teleport");
+    if (!(await page.locator('a[href="command.html?id=tp"]').count())) fail("大ずかんから /tp への リンクが ない");
+    if (await page.locator("#reference-list").isVisible()) fail("くわしい ページで 一覧が 出て いる");
+    // 基本編の コマンドは ぜんぶ 大ずかんへ つながる
+    const basics = await page.evaluate(() => window.SITE_DATA.commands.map((c) => c.refId || c.id));
+    const noRef = basics.filter((b) => !ids.has(b));
+    if (noRef.length) fail("大ずかんに つながらない 基本コマンド: " + noRef.join(", "));
   }
   if (errors.length) fail("ずかんでエラー: " + errors.join(" / "));
   await context.close();

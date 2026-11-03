@@ -69,7 +69,7 @@ window.SITE_DATA = {
     { id: "programming", title: "プログラミングって なに？", href: "pages/programming.html", menu: "lookup", icon: "gamepad", color: "btn-sky", yomi: ["ぷろぐらみんぐ", "めいれい", "じゅんばん", "もし", "くりかえし"], sub: "まとめ", ready: true },
     { id: "cheatsheet", title: "はやみひょう（コマンド）", href: "pages/cheatsheet.html", menu: "lookup", icon: "list-box", color: "btn-grass", yomi: ["はやみひょう", "まとめ"], sub: "1まいで ぜんぶ", ready: true },
     { id: "cheatsheet-blocks", title: "はやみひょう（ブロックの せってい）", href: "pages/cheatsheet-blocks.html", menu: "lookup", icon: "list-box", color: "btn-grass", yomi: ["はやみひょう", "せってい"], sub: "コマンドブロックの せってい", ready: true },
-    { id: "reference", title: "コマンド大ずかん", href: "pages/reference.html", menu: "lookup", icon: "book-open", color: "btn-grass", yomi: ["だいずかん", "おうよう", "ぜんぶ"], sub: "もっと しりたい ひとへ", ready: false },
+    { id: "reference", title: "コマンド大ずかん", href: "pages/reference.html", menu: "lookup", icon: "book-open", color: "btn-grass", yomi: ["だいずかん", "おうよう", "ぜんぶ"], sub: "もっと しりたい ひとへ", ready: true },
     { id: "dont", title: "やっては いけない コマンド", href: "pages/dont.html", menu: "lookup", icon: "warning-diamond", color: "btn-dirt", yomi: ["だめ", "あぶない", "ちゅうい", "やってはいけない"], sub: "まもって あそぼう", ready: true },
     { id: "stamps", title: "スタンプちょう", href: "pages/stamps.html", menu: "lookup", icon: "trophy", color: "btn-dirt", yomi: ["すたんぷ"], sub: "あつめた スタンプ", ready: true },
     { id: "start", title: "はじめに（ワールドの準備）", href: "pages/start.html", menu: "parents", icon: "gamepad", color: "btn-grass", yomi: ["じゅんび", "ちーと", "わーるど"], sub: "チート・コマンドブロックの入手", ready: true },

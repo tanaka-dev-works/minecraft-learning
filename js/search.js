@@ -33,7 +33,7 @@
     (data.reference || []).forEach(function (r) {
       if (r.basic) return; // 基本編に あるものは 基本編を さきに 出す
       items.push({
-        title: r.name, sub: plain(r.what || ""), href: "pages/reference.html?id=" + r.id, kind: "大ずかん", icon: "book-open",
+        title: r.name, sub: plain(r.what || r.reason || ""), href: "pages/reference.html?id=" + r.id, kind: "大ずかん", icon: "book-open",
         keys: [r.id, r.name, r.read || ""].concat(r.yomi || []).map(norm),
         body: norm(plain(r.what || ""))
       });
