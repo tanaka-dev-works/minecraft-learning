@@ -625,3 +625,25 @@ strong.x { color: #b3261e; } strong.y { color: var(--c-grass-dark); } strong.z {
 .quiz-ok { color: var(--c-grass-dark); }
 .quiz-ng { color: var(--c-alert); }
 .quiz-ok .icon, .quiz-ng .icon { width: 32px; height: 32px; }
+
+/* =====================================================================
+   フェーズ7：コマンドブロックずかん・トラブル・エラー
+   ===================================================================== */
+.cb-cube { width: 56px; height: 56px; border: 3px solid var(--c-line); box-shadow: inset 6px 6px 0 rgba(255,255,255,.3), inset -6px -6px 0 rgba(0,0,0,.25); }
+.tr-grid { display: grid; gap: var(--gap-tap); grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); align-items: start; margin-bottom: var(--sp-6); }
+.tr-card { background: var(--c-surface); border: 3px solid var(--c-line); border-bottom-width: 7px; }
+.tr-card summary {
+  list-style: none; cursor: pointer; display: flex; align-items: center; gap: var(--sp-3);
+  min-height: 88px; padding: var(--sp-3) var(--sp-4); font-family: var(--font-head);
+}
+.tr-card summary::-webkit-details-marker { display: none; }
+.tr-card summary .icon { width: 44px; height: 44px; flex: none; color: var(--c-alert); }
+.tr-card[open] { grid-column: 1 / -1; border-color: var(--c-sky); }
+.tr-body { padding: 0 var(--sp-4) var(--sp-4); }
+.tr-row { display: flex; gap: var(--sp-3); align-items: flex-start; }
+.tr-label { flex: none; font-family: var(--font-head); font-size: var(--fs-small); padding: 0 var(--sp-2); background: var(--c-stone); color: #fff; margin-top: 4px; }
+.tr-label.tr-fix { background: var(--c-grass); }
+.err-card { background: var(--c-surface); border: 3px solid var(--c-alert); padding: var(--sp-4); margin-bottom: var(--sp-4); }
+.err-ja { display: flex; gap: var(--sp-2); align-items: center; font-family: var(--font-head); color: var(--c-alert); }
+.err-ja .icon { width: 32px; height: 32px; flex: none; }
+.err-en code { background: #2b2620; color: #ff8a80; padding: var(--sp-1) var(--sp-3); display: inline-block; }

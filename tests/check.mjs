@@ -15,7 +15,7 @@ const { chromium } = createRequire(import.meta.url)("playwright");
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), "..");
 const BASE = "/minecraft-learning/";
-const PAGES = ["index.html", "404.html", "pages/stamps.html", "pages/parts.html", "pages/commands.html", "pages/command.html?id=tp", "pages/command.html?id=scoreboard", "pages/command.html?id=nope", "pages/search.html?q=てれぽーと", "pages/dont.html", "pages/syntax.html", "pages/selectors.html", "pages/start.html", "pages/parents.html", "pages/level1.html", "pages/level2.html", "pages/level3.html", "works/morning.html", "works/block-magic.html", "works/diamond-button.html", "works/message.html", "pages/quiz.html", "pages/quiz.html?level=1", "pages/quiz.html?level=2", "pages/quiz.html?level=3", "pages/level4.html", "pages/level5.html", "pages/level6.html", "works/teleport.html", "works/item-giver.html", "works/auto-door.html", "works/minigame.html", "pages/quiz.html?level=6"];
+const PAGES = ["index.html", "404.html", "pages/stamps.html", "pages/parts.html", "pages/commands.html", "pages/command.html?id=tp", "pages/command.html?id=scoreboard", "pages/command.html?id=nope", "pages/search.html?q=てれぽーと", "pages/dont.html", "pages/syntax.html", "pages/selectors.html", "pages/start.html", "pages/parents.html", "pages/level1.html", "pages/level2.html", "pages/level3.html", "works/morning.html", "works/block-magic.html", "works/diamond-button.html", "works/message.html", "pages/quiz.html", "pages/quiz.html?level=1", "pages/quiz.html?level=2", "pages/quiz.html?level=3", "pages/level4.html", "pages/level5.html", "pages/level6.html", "works/teleport.html", "works/item-giver.html", "works/auto-door.html", "works/minigame.html", "pages/quiz.html?level=6", "pages/command-blocks.html", "pages/troubleshooting.html", "pages/errors.html", "pages/programming.html"];
 const WIDTHS = [
   { name: "phone", width: 375, height: 740 },
   { name: "tablet-portrait", width: 768, height: 1024 },
@@ -251,7 +251,7 @@ for (const link of allLinks) {
   const learned = await page.locator('a[href="command.html?id=give"] .cmd-learned').count();
   if (learned !== 1) fail("おぼえた が いちらんに 出ない");
   // 子ども向けページに外部リンクがない
-  for (const p of ["pages/command.html?id=tp", "pages/commands.html", "index.html", "pages/dont.html", "pages/syntax.html", "pages/selectors.html", "pages/stamps.html"]) {
+  for (const p of ["pages/command.html?id=tp", "pages/commands.html", "index.html", "pages/dont.html", "pages/syntax.html", "pages/selectors.html", "pages/stamps.html", "pages/command-blocks.html", "pages/troubleshooting.html", "pages/errors.html", "pages/programming.html", "pages/level5.html", "works/auto-door.html"]) {
     await page.goto(origin + BASE + p);
     const ext = await page.evaluate(() => [...document.querySelectorAll("a[href]")].filter((a) => !a.href.startsWith(location.origin) && !a.href.startsWith("file:")).length);
     if (ext) fail(`${p}: 子ども向けページに外部リンクが ${ext} こ`);
@@ -312,6 +312,18 @@ for (const link of allLinks) {
     if (!(await page.locator(".quiz-total .guide").count())) fail(`レベル${lv}: ぜんぶ せいかい が 出ない`);
   }
   if (errors.length) fail("さくひん・クイズで エラー: " + errors.join(" / "));
+  await context.close();
+}
+
+// 9c) トラブル かいけつ：10こ いじょう、おすと ひらく
+{
+  const context = await browser.newContext({ viewport: { width: 768, height: 1024 } });
+  const page = await context.newPage();
+  await page.goto(origin + BASE + "pages/troubleshooting.html");
+  const n = await page.locator(".tr-card").count();
+  if (n < 10) fail(`トラブルが ${n} こ（10こ いじょう いる）`);
+  await page.locator(".tr-card summary").first().click();
+  if (!(await page.locator(".tr-card[open] .tr-fix").count())) fail("トラブルの なおしかたが ひらかない");
   await context.close();
 }
 
